@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <h1>New account</h1>
+    <h1>NEW ACCOUNT</h1>
 
     <form th:action="@{/save-user}" method="post" th:object="${user}">
         <input id="firstName" type="text" placeholder="First name" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')} ? error : form"><br>
