@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="main.css"/>
+
+</head>
+<body>
+
+    <h1>NEW ACCOUNT</h1>
+
+    <form th:action="@{/save-user}" method="post" th:object="${user}">
+        <input id="firstName" type="text" placeholder="First name" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')} ? error : form"><br>
+        <input id="lastName" type="text" placeholder="Last name" th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')} ? error : form"><br>
+        <input id="login" type="text" placeholder="User name" th:field="*{login}" th:class="${#fields.hasErrors('login')} ? error : form"><br>
+        <input id="email" type="text" placeholder="E-mail" th:field="*{email}" th:class="${#fields.hasErrors('email')} ? error : form"><br>
+        <input id="password" type="text" placeholder="Password" th:field="*{password}" th:class="${#fields.hasErrors('password')} ? error : form"><br>
+        <input value="Save" type="submit">
+    </form>
+
+
+
+</body>
+</html>

@@ -10,10 +10,14 @@ import pl.lukaszsowa.CRM.model.User;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getHome(User user, Model model){
-        model.addAttribute("user", new User());
+    @GetMapping("/")
+    public String loginPage(){
         return "home";
     }
 
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String getHome(User user, Model model){
+        model.addAttribute("user", new User());
+        return "registration";
+    }
 }
