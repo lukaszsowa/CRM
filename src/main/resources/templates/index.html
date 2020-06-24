@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
@@ -7,11 +7,30 @@
 </head>
 <body>
 
-    <div class="topBar">
-        <a sec:authorize="isAuthenticated()" href="/logout">
-            <button type="button">LOGOUT</button>
-        </a>
+    <div id="bar">
+        <div id="userInfo">
+            <p id="fullName" th:text="${fullName}"></p>
+            <p id="role" th:text="${role}"></p>
+        </div>
+        <div id="logo">
+            <img src="crm.png"/>
+        </div>
+        <div id="logout">
+            <a sec:authorize="isAuthenticated()" href="/logout">
+                <button type="button">LOGOUT</button>
+            </a>
+        </div>
     </div>
+
+    <div id="left">
+
+    </div>
+
+
+
+
+
+
 
 </body>
 </html>

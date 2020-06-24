@@ -4,11 +4,65 @@ body
     text-align: center;
 }
 
-.topBar
+#bar
 {
     height: 70px;
     background-color: #4A5364;
+}
+
+#userInfo
+{
+    width: 20%;
+    float: left;
+    text-align: left;
+    color: white;
+    margin-bottom: 0px;
+
+}
+
+#fullName
+{
+    font-size: 25px;
+    margin-left: 20px;
+    margin-top: 9px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#role
+{
+    margin-left: 21px;
+    margin-top: 4px;
+    font-size: 13px;
+}
+
+#logo
+{
+    width: 60%;
+    float: left;
+    text-align: center;
+}
+
+img
+{
+    height: 66px;
+}
+
+#logout
+{
+    width: 20%;
+    float: left;
     text-align: right;
+}
+
+#left
+{
+    clear: both;
+    width: 20%;
+    height: 500px;
+    background-color: #4A5364;
+
 }
 
 input[type=password], input[type=text]
