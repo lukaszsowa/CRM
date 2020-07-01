@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import pl.lukaszsowa.CRM.model.User;
 import pl.lukaszsowa.CRM.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -21,5 +23,9 @@ public class UserService {
 
     public User getUser(String login){
         return userRepository.getUser(login);
+    }
+
+    public List<User> getUsers(){
+        return userRepository.findAll();
     }
 }

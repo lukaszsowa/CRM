@@ -64,7 +64,22 @@ img
     width: 15%;
     height: 900px;
     background-color: #4A5364;
+    float: left;
 
+}
+
+#right
+{
+    width: 85%;
+    height: 900px;
+    float: left;
+
+}
+
+#usersList
+{
+    margin: 50px;
+    font-size: larger;
 }
 
 input[type=password], input[type=text]
@@ -116,5 +131,24 @@ button[type=button]
     padding-left: 21px;
     padding-top: 20px;
     font-weight: bold;
- }
+}
+
+a:link {
+  text-decoration: none;
+  color: #dbdbdb;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #dbdbdb;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #dbdbdb;
+}
+
+a:active {
+  text-decoration: underline;
+  color: #dbdbdb;
 }
