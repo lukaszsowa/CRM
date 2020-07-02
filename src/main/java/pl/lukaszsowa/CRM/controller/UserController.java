@@ -6,9 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.lukaszsowa.CRM.model.Role;
 import pl.lukaszsowa.CRM.model.User;
 import pl.lukaszsowa.CRM.service.RoleService;
@@ -47,5 +45,11 @@ public class UserController {
         model.addAttribute("fullName", fullName);
         model.addAttribute("role", role);
         return "users";
+    }
+
+    @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("id") long id){
+        userService.deleteUser(id);
+        return "redirect:/users";
     }
 }

@@ -78,7 +78,7 @@ img
 
 #usersList
 {
-    margin: 50px;
+    margin: 65px;
     font-size: larger;
 }
 
@@ -151,4 +151,40 @@ a:hover {
 a:active {
   text-decoration: underline;
   color: #dbdbdb;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px 20px;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+#deleteBtn
+{
+    padding: 5px;
+    margin-left: 15px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    background-color: #FF6A61;
+    font-size: medium;
+    width: 100px;
+}
+
+#detailsBtn
+{
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    background-color: #FED876;
+    font-size: medium;
+    width: 100px;
 }

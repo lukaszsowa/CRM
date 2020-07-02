@@ -29,8 +29,9 @@
 
         <div id="main">
             <div id="left">
+                <div class="menu"><a href="/home"> Home </a></div>
                 <div class="menu"> Contacts </div>
-                <div class="menu"> Contractors </div>
+                <div class="menu"> Companies </div>
                 <div class="menu"> Trainings </div>
                 <div class="menu"> Localizations </div>
                 <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
@@ -43,7 +44,7 @@
                     <th> Last name</th>
                     <th> Login</th>
                     <th> E-mail</th>
-                    <th> Role</th>
+                    <th>        </th>
                     </thead>
                     <tbody>
                         <tr th:each="user : ${usersList}">
@@ -52,7 +53,10 @@
                             <td th:text="${user.lastName}"></td>
                             <td th:text="${user.login}"></td>
                             <td th:text="${user.email}"></td>
-                            <td th:text="${user.role}"></td>
+                            <td>
+                                <button id="detailsBtn">Details</button>
+                                <a th:href="'/users/delete/' + ${user.id}" onclick="return confirm('Are you sure?')"><button id="deleteBtn">Delete</button></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
