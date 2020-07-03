@@ -78,7 +78,8 @@ img
 
 #usersList
 {
-    margin: 65px;
+    margin-left: 65px;
+    margin-top: 25px;
     font-size: larger;
 }
 
@@ -187,4 +188,29 @@ table {
     background-color: #FED876;
     font-size: medium;
     width: 100px;
+}
+
+#addUserBtn
+{
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    background-color: #77BD8B;
+    font-size: medium;
+    width: 100px;
+}
+
+#addUser
+{
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 65px;
+    text-align: left;
+}
+
+#userTbl
+{
+    float: left;
 }

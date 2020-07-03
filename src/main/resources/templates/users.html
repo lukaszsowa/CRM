@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
-    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="/main.css"/>
     <script src="https://kit.fontawesome.com/yourcode.js"></script>
 
 
@@ -18,7 +18,7 @@
                 <p id="role" th:text="${role}"></p>
             </div>
             <div id="logo">
-                <img src="crm.png"/>
+                <img src="/crm.png"/>
             </div>
             <div id="logout">
                 <a sec:authorize="isAuthenticated()" href="/logout">
@@ -37,16 +37,20 @@
                 <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
             </div>
             <div id="right">
-                <table id="usersList">
-                    <thead>
-                    <th> ID </th>
-                    <th> First name</th>
-                    <th> Last name</th>
-                    <th> Login</th>
-                    <th> E-mail</th>
-                    <th>        </th>
-                    </thead>
-                    <tbody>
+                <div id="addUser">
+                    <a href="/users/add"><button id="addUserBtn"> Add user </button></a>
+                </div>
+                <div id="userTbl">
+                    <table id="usersList">
+                        <thead>
+                        <th> ID </th>
+                        <th> First name</th>
+                        <th> Last name</th>
+                        <th> Login</th>
+                        <th> E-mail</th>
+                        <th>        </th>
+                        </thead>
+                        <tbody>
                         <tr th:each="user : ${usersList}">
                             <td th:text="${user.id}"></td>
                             <td th:text="${user.firstName}"></td>
@@ -54,12 +58,13 @@
                             <td th:text="${user.login}"></td>
                             <td th:text="${user.email}"></td>
                             <td>
-                                <button id="detailsBtn">Details</button>
+                                <a th:href="'/users/' + ${user.id}"><button  id="detailsBtn">Details</button></a>
                                 <a th:href="'/users/delete/' + ${user.id}" onclick="return confirm('Are you sure?')"><button id="deleteBtn">Delete</button></a>
                             </td>
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </body>

@@ -8,6 +8,7 @@ import pl.lukaszsowa.CRM.model.User;
 import pl.lukaszsowa.CRM.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -31,5 +32,9 @@ public class UserService {
 
     public List<User> getUsers(){
         return userRepository.findAll();
+    }
+
+    public Optional<User> getUserById(long id){
+        return userRepository.findById(id);
     }
 }

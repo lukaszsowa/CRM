@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/main.css"/>
+</head>
+<body>
+
+<body>
+
+<div id="bar">
+    <div id="userInfo">
+        <p id="fullName" th:text="${fullName}"></p>
+        <p id="role" th:text="${role}"></p>
+    </div>
+    <div id="logo">
+        <img src="/crm.png"/>
+    </div>
+    <div id="logout">
+        <a sec:authorize="isAuthenticated()" href="/logout">
+            <button type="button">LOGOUT</button>
+        </a>
+    </div>
+</div>
+
+<div id="left">
+    <div class="menu"><a href="/home"> Home </a></div>
+    <div class="menu"><a href="/contacts">Contacts</a></div>
+    <div class="menu"> Companies </div>
+    <div class="menu"> Trainings </div>
+    <div class="menu"> Localizations </div>
+    <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
+
+
+
+</div>
+
+
+
+
+
+</body>
+
+</body>
+</html>

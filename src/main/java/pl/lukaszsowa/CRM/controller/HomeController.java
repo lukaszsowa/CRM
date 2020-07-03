@@ -23,12 +23,6 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String getHome(User user, Model model){
-        model.addAttribute("user", new User());
-        return "registration";
-    }
-
     @GetMapping("/home")
     public String getIndex(Model model){
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
