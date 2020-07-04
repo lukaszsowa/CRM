@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"><head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/main.css"/>
+    <link rel="stylesheet" href="/main.css">
 
 </head>
 <body>
 
-<body>
+
 
 <div id="bar">
     <div id="userInfo">
-        <p id="fullName" th:text="${fullName}"></p>
-        <p id="role" th:text="${role}"></p>
+        <p id="fullName">Jan Kowalski</p>
+        <p id="role">ADMIN</p>
     </div>
     <div id="logo">
-        <img src="/crm.png"/>
+        <img src="/crm.png">
     </div>
     <div id="logout">
         <a sec:authorize="isAuthenticated()" href="/logout">
@@ -32,16 +30,22 @@
     <div class="menu"> Trainings </div>
     <div class="menu"> Localizations </div>
     <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
+</div>
 
-
-
+<div id="right">
+    <div id="nav"><span th:text="'Home   /   Users   /   ' + ${user.login}"></span></div>
+    <input type="text" th:value="${user.id}"><br>
+    <input type="text" th:value="${user.firstName}"><br>
+    <input type="text" th:value="${user.lastName}"><br>
+    <input type="text" th:value="${user.login}"><br>
+    <input type="text" th:value="${user.email}"><br>
 </div>
 
 
 
 
 
-</body>
 
-</body>
-</html>
+
+
+</body></html>

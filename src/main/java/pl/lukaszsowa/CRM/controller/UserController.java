@@ -69,7 +69,6 @@ public class UserController {
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public String getUserDetails(@PathVariable("id") long id, Model model){
-        model.addAttribute("user", new User());
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
         String login = loggedUser.getName();
         String fullName = userService.getUser(login).getFirstName() + " " + userService.getUser(login).getLastName();

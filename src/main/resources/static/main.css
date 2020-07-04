@@ -214,3 +214,11 @@ table {
 {
     float: left;
 }
+
+#nav
+{
+    background-color: #cccccc;
+    height: 20px;
+    text-align: left;
+    padding: 10px;
+}
