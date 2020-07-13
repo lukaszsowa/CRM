@@ -4,55 +4,44 @@
     <link rel="stylesheet" href="/main.css">
 
 </head>
+
 <body>
-
-
-
-<div id="bar">
-    <div id="userInfo">
-        <p id="fullName" th:text="${fullName}"></p>
-        <p id="role" th:text="${role}"></p>
+    <div id="bar">
+        <div id="userInfo">
+            <p id="fullName" th:text="${fullName}"></p>
+            <p id="role" th:text="${role}"></p>
+        </div>
+        <div id="logo">
+            <img src="/crm.png">
+        </div>
+        <div id="logout">
+            <a sec:authorize="isAuthenticated()" href="/logout">
+                <button type="button">LOGOUT</button>
+            </a>
+        </div>
     </div>
-    <div id="logo">
-        <img src="/crm.png">
+
+    <div id="left">
+        <div class="menu"><a href="/home"> Home </a></div>
+        <div class="menu"><a href="/contacts">Contacts</a></div>
+        <div class="menu"> Companies </div>
+        <div class="menu"> Trainings </div>
+        <div class="menu"> Localizations </div>
+        <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
     </div>
-    <div id="logout">
-        <a sec:authorize="isAuthenticated()" href="/logout">
-            <button type="button">LOGOUT</button>
-        </a>
+
+    <div id="right">
+        <div id="nav"><span th:text="'Home / Users / ' + ${user.login}"></span></div>
+
+        <div id="details">
+            <input class="edit" th:value="${user.firstName}" readonly><br>
+            <input class="edit" th:value="${user.lastName}" readonly><br>
+            <input class="edit" th:value="${user.login}" readonly><br>
+            <input class="edit" th:value="${user.email}" readonly><br>
+            <a href="/users"><button  id="backBtn">Back</button></a>
+        </div>
+
     </div>
-</div>
+</body>
 
-<div id="left">
-    <div class="menu"><a href="/home"> Home </a></div>
-    <div class="menu"><a href="/contacts">Contacts</a></div>
-    <div class="menu"> Companies </div>
-    <div class="menu"> Trainings </div>
-    <div class="menu"> Localizations </div>
-    <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
-</div>
-
-<div id="right">
-    <div id="nav"><span th:text="'Home / Users / ' + ${user.login}"></span></div>
-
-
-        <input type="hidden" th:value="${user.id}"><br>
-        <input type="text" th:value="${user.firstName}"><br>
-        <input type="text" th:value="${user.lastName}"><br>
-        <input type="text" th:value="${user.login}"><br>
-        <input type="text" th:value="${user.email}"><br>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-</body></html>
+</html>

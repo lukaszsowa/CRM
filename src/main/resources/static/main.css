@@ -2,6 +2,7 @@ body
 {
     margin: 0px;
     text-align: center;
+    letter-spacing: 1pt;
 }
 
 #bar
@@ -78,14 +79,16 @@ img
 
 #usersList
 {
-    margin-left: 65px;
+    margin-left: 50px;
     margin-top: 25px;
     font-size: larger;
 }
 
 input[type=password], input[type=text]
 {
-    width: 200px;
+    width: 300px;
+    height: 20px;
+    font-size: 15px;
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
@@ -94,11 +97,23 @@ input[type=password], input[type=text]
 
 input[type=submit]
 {
+    width: 150px;
+    padding: 11px;
+    margin: 15px;
+    border-radius: 10px;
+    border: 1px solid #77BD8B;
+    background-color: #77BD8B;
+    font-size: 15px;
+    color: white;
+}
+
+#loginBtn
+{
     width: 100px;
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
-    border: 1px solid #333333;
+    border: 1px solid #999999;
     background-color: #999999;
 }
 
@@ -116,11 +131,10 @@ button[type=button]
 
 .error
 {
-    width: 200px;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 2px solid #ff0000;
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
 }
 
 .menu
@@ -190,6 +204,18 @@ table {
     width: 100px;
 }
 
+#backBtn
+{
+    width: 150px;
+    padding: 11px;
+    margin: 15px;
+    border-radius: 10px;
+    border: 1px solid #5199FF;
+    background-color: #5199FF;
+    font-size: 15px;
+    color: white;
+}
+
 #addUserBtn
 {
     padding: 5px;
@@ -205,8 +231,8 @@ table {
 {
     float: left;
     width: 100%;
-    margin-top: 50px;
-    margin-left: 65px;
+    margin-top: 30px;
+    margin-left: 50px;
     text-align: left;
 }
 
@@ -221,4 +247,31 @@ table {
     height: 20px;
     text-align: left;
     padding: 10px;
+    letter-spacing: 3pt;
+}
+
+#registration
+{
+    margin-top: 20px;
+}
+
+#test
+{
+    background-color: red;
+}
+
+.edit
+{
+    width: 320px;
+    height: 40px;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #333333;
+}
+
+#details
+{
+    margin-top: 20px;
 }
