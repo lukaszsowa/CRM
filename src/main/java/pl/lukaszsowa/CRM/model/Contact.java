@@ -29,6 +29,9 @@ public class Contact {
     @NotBlank(message = "Enter last name")
     private String lastName;
 
+    @NotBlank(message="Enter job title!")
+    private String jobTitle;
+
     //@NotBlank(message = "Enter lead source")
     //private String leadSource;
 
@@ -40,6 +43,14 @@ public class Contact {
 
     @NotBlank(message = "Enter phone number")
     private String phone;
+
+    @NotBlank(message = "Enter phone number")
+    private String doNotCall;
+
+    @NotBlank(message = "Enter phone number")
+    private String emailOutput;
+
+    private String extraInfo;
 
     @NotBlank(message = "Enter e-mail")
     private String email;
