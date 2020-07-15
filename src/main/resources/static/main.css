@@ -275,3 +275,8 @@ table {
 {
     margin-top: 20px;
 }
+
+#clock
+{
+    float: right;
+}

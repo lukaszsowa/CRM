@@ -2,6 +2,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/main.css">
+    <script type="text/javascript" src="/script.js"></script>
+
 
 </head>
 
@@ -31,7 +33,14 @@
     </div>
 
     <div id="right">
-        <div id="nav"><span th:text="'Home / Users / ' + ${user.login}"></span></div>
+        <div id="nav">
+            <span th:text="'Home / Users / ' + ${user.login}"></span>
+            <span id="clock"></span>
+
+            <script type="text/javascript">
+                showTime();
+            </script>
+        </div>
 
         <div id="details">
             <input class="edit" th:value="${user.firstName}" readonly><br>

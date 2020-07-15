@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/main.css"/>
+    <script type="text/javascript" src="/script.js"></script>
+
 </head>
 <body>
 
@@ -33,7 +35,14 @@
     <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
 </div>
 <div id="right">
-    <div id="nav"><span>Home / Users / Add user</span></div>
+    <div id="nav">
+        <span>Home / Users / Add user</span>
+        <span id="clock"></span>
+
+        <script type="text/javascript">
+            showTime();
+        </script>
+    </div>
     <div id="registration">
         <form th:action="@{/save-user}" method="post" th:object="${user}">
 
