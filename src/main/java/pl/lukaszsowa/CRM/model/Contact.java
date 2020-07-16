@@ -32,14 +32,14 @@ public class Contact {
     @NotBlank(message="Enter job title!")
     private String jobTitle;
 
-    //@NotBlank(message = "Enter lead source")
-    //private String leadSource;
+    @NotBlank(message = "Enter lead source")
+    private String leadSource;
 
-    //@NotBlank(message = "Enter first name")
-    //private String status;
+    @NotBlank(message = "Enter first name")
+    private String status;
 
-    //@NotBlank(message = "Enter first name")
-    //private String company;
+    @NotBlank(message = "Enter first name")
+    private String company;
 
     @NotBlank(message = "Enter phone number")
     private String phone;
@@ -49,8 +49,6 @@ public class Contact {
 
     @NotBlank(message = "Enter phone number")
     private String emailOutput;
-
-    private String extraInfo;
 
     @NotBlank(message = "Enter e-mail")
     private String email;

@@ -280,3 +280,50 @@ table {
 {
     float: right;
 }
+
+#basicInfo
+{
+    margin: 20px;
+    height: 257px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #ededed;
+}
+
+#contactInfo
+{
+    margin: 20px;
+    height: 190px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #ededed;
+}
+
+#basicInfoHeader
+{
+    background-color: #ededed;
+    height: 18px;
+    text-align: left;
+    padding: 14px;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+#contactInfoHeader
+{
+    background-color: #ededed;
+    height: 18px;
+    text-align: left;
+    padding: 14px;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.addBlock
+{
+    height: 70px;
+    width: 256px;
+    float: left;
+}
