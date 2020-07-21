@@ -45,87 +45,95 @@
             </script>
     </div>
 
-    <div id="basicInfo">
-        <div id="basicInfoHeader"> Basic information </div>
-        <div>
-            <div class="addBlock">
-                <input class="addInput">
+    <form th:action="@{/save-contact}" method="post" th:object="${contact}">
+
+        <div id="basicInfo">
+            <div id="basicInfoHeader"> Basic information </div>
+            <div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> First name</span>
+                </div>
+                <div class="addBlock">
+                    <input class="addInput" th:field="*{firstName}">
+                </div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Last name</span>
+                </div>
+                <div class="addBlock">
+                    <input class="addInput" th:field="*{lastName}">
+                </div>
             </div>
-            <div class="addBlock">
-                <input class="addInput">
+
+            <div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Job title</span>
+                </div>
+                <div class="addBlock">
+                    <input class="addInput" th:field="*{jobTitle}">
+                </div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Lead source</span>
+                </div>
+                <div class="addBlock">
+                    <input class="addInput" th:field="*{leadSource}">
+                </div>
             </div>
-            <div class="addBlock">
-                <input class="addInput">
+
+            <div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Company</span>
+                </div>
+                <div class="addBlock">
+                    <input class="addInput" th:field="*{company}">
+                </div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Status</span>
+                </div>
+                <div class="addBlock">
+                    <input class="addInput" th:field="*{status}">
+                </div>
             </div>
-            <div class="addBlock">
-                <input class="addInput">
+
+        </div>
+        <div id="contactInfo">
+            <div id="contactInfoHeader"> Contact information </div>
+
+            <div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Phone</span>
+                </div>
+                <div class="addBlock">
+                    <input class="addInput" th:field="*{phone}">
+                </div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> E-mail</span>
+                </div>
+                <div class="addBlock">
+                    <input class="addInput" th:field="*{email}">
+                </div>
+            </div>
+
+            <div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Permission to call</span>
+                </div>
+                <div class="addBlock">
+                    <input type="checkbox" th:field="*{doNotCall}">
+                </div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Permission to send e-mail</span>
+                </div>
+                <div class="addBlock">
+                    <input type="checkbox" th:field="*{emailOutput}">
+                </div>
             </div>
         </div>
 
-        <div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-        </div>
 
-        <div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-        </div>
+        <input value="Save" type="submit">
+    </form>
 
-    </div>
-    <div id="contactInfo">
-        <div id="contactInfoHeader"> Contact information </div>
 
-        <div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-        </div>
-
-        <div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-            <div class="addBlock">
-                <input class="addInput">
-            </div>
-        </div>
-    </div>
 </div>
 </body>
 </html>

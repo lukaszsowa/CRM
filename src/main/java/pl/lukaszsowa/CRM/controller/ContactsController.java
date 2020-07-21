@@ -5,15 +5,26 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.User;
+import pl.lukaszsowa.CRM.service.ContactService;
 import pl.lukaszsowa.CRM.service.UserService;
+
+import javax.validation.Valid;
+import java.time.LocalDateTime;
 
 @Controller
 public class ContactsController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ContactService contactService;
 
     public void getLoggedUserInfo(Model model) {
         model.addAttribute("usersList", userService.getUsers());
@@ -32,8 +43,21 @@ public class ContactsController {
 
     @GetMapping("contacts/add")
     public String addUser(Model model){
-        model.addAttribute("user", new User());
+        model.addAttribute("contact", new Contact());
         getLoggedUserInfo(model);
         return "contacts-add";
+    }
+
+    @PostMapping("/save-contact")
+    public String saveContact(@Valid @ModelAttribute Contact contact, BindingResult bindingResult, Model model){
+        getLoggedUserInfo(model);
+        if(bindingResult.hasErrors()){
+            return "contacts-add";
+        } else {
+            model.addAttribute("contact", new Contact());
+            contact.setCreateTime(LocalDateTime.now());
+            contactService.addContact(contact);
+        }
+        return "redirect:/contacts";
     }
 }

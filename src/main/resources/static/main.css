@@ -323,7 +323,22 @@ table {
 
 .addBlock
 {
-    height: 70px;
+    height: 60px;
+    padding-top: 10px;
     width: 256px;
     float: left;
+}
+
+.addBlockText
+{
+    height: 60px;
+    padding-top: 10px;
+    width: 256px;
+    float: left;
+    text-align: right;
+}
+
+.addContactsTheme
+{
+
 }
