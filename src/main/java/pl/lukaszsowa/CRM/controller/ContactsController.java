@@ -27,7 +27,6 @@ public class ContactsController {
     ContactService contactService;
 
     public void getLoggedUserInfo(Model model) {
-        model.addAttribute("usersList", userService.getUsers());
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
         String login = loggedUser.getName();
         String fullName = userService.getUser(login).getFirstName() + " " + userService.getUser(login).getLastName();
@@ -37,7 +36,9 @@ public class ContactsController {
     }
 
     @GetMapping("/contacts")
-    public String getContact(){
+    public String getContact(Model model){
+        getLoggedUserInfo(model);
+        model.addAttribute("contacts", contactService.getContacts());
         return "contacts";
     }
 

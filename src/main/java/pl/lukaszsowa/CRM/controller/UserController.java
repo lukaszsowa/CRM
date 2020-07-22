@@ -27,7 +27,6 @@ public class UserController {
     RoleService roleService;
 
     public void getLoggedUserInfo(Model model) {
-        model.addAttribute("usersList", userService.getUsers());
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
         String login = loggedUser.getName();
         String fullName = userService.getUser(login).getFirstName() + " " + userService.getUser(login).getLastName();
@@ -39,6 +38,7 @@ public class UserController {
 
     @GetMapping("/users")
     public String getUsersPage(Model model){
+        model.addAttribute("usersList", userService.getUsers());
         getLoggedUserInfo(model);
         return "users";
     }
@@ -59,6 +59,7 @@ public class UserController {
             model.addAttribute("user", new User());
             user.setRole(roleService.getRole("user"));
             userService.addUser(user);
+            model.addAttribute("usersList", userService.getUsers());
         }
         return "redirect:/users";
     }
@@ -72,6 +73,7 @@ public class UserController {
             model.addAttribute("user", new User());
             user.setRole(roleService.getRole("user"));
             userService.addUser(user);
+            model.addAttribute("usersList", userService.getUsers());
         }
         return "redirect:/users";
     }

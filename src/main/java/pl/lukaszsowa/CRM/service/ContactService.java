@@ -9,6 +9,8 @@ import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.User;
 import pl.lukaszsowa.CRM.repository.ContactRepository;
 
+import java.util.List;
+
 @Service
 public class ContactService {
 
@@ -17,5 +19,9 @@ public class ContactService {
 
     public Contact addContact(Contact contact){
         return contactRepository.save(contact);
+    }
+
+    public List<Contact> getContacts(){
+        return contactRepository.findAll();
     }
 }
