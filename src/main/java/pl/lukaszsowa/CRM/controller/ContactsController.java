@@ -6,9 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.User;
 import pl.lukaszsowa.CRM.service.ContactService;
@@ -59,6 +57,12 @@ public class ContactsController {
             contact.setCreateTime(LocalDateTime.now());
             contactService.addContact(contact);
         }
+        return "redirect:/contacts";
+    }
+
+    @RequestMapping(value = "/contacts/delete/{id}", method = RequestMethod.GET)
+    public String deleteContact(@PathVariable("id") long id){
+        contactService.deleteContact(id);
         return "redirect:/contacts";
     }
 }

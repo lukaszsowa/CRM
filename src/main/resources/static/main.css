@@ -47,11 +47,6 @@ body
     text-align: center;
 }
 
-img
-{
-    height: 46px;
-}
-
 #logout
 {
     width: 20%;
@@ -79,9 +74,11 @@ img
 
 #usersList
 {
-    margin-left: 50px;
-    margin-top: 25px;
+    margin-left: 3%;
+    margin-top: 2%;
+    margin-right: 3%;
     font-size: larger;
+    width: 94%;
 }
 
 input[type=password], input[type=text]
@@ -109,12 +106,14 @@ input[type=submit]
 
 #loginBtn
 {
-    width: 100px;
+    width: 150px;
+    font-size: 16px;
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
-    border: 1px solid #999999;
-    background-color: #999999;
+    border: 1px solid #4A5364;
+    background-color: #4A5364;
+    font-weight: bold;
 }
 
 button[type=button]
@@ -239,6 +238,7 @@ table {
 #userTbl
 {
     float: left;
+    width: 100%
 }
 
 #nav
@@ -341,4 +341,24 @@ table {
 .addContactsTheme
 {
 
+}
+
+.actionBtn
+{
+    width: 230px;
+}
+
+#logoLoginPage
+{
+    width: 350px;
+}
+
+#loginPage
+{
+    background-color: #CCCCCC
+}
+
+#logoNav
+{
+    height: 46px;
 }

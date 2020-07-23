@@ -20,7 +20,7 @@
                 <p id="role" th:text="${role}"></p>
             </div>
             <div id="logo">
-                <img src="/crm.png"/>
+                <img id="logoNav" src="/crm.png"/>
             </div>
             <div id="logout">
                 <a sec:authorize="isAuthenticated()" href="/logout">
@@ -59,7 +59,7 @@
                         <th> Last name</th>
                         <th> Login</th>
                         <th> E-mail</th>
-                        <th>        </th>
+                        <th class="actionBtn">        </th>
                         </thead>
                         <tbody>
                         <tr th:each="user : ${usersList}">
@@ -68,7 +68,7 @@
                             <td th:text="${user.lastName}"></td>
                             <td th:text="${user.login}"></td>
                             <td th:text="${user.email}"></td>
-                            <td>
+                            <td class="actionBtn">
                                 <a th:href="'/users/' + ${user.id}"><button  id="detailsBtn">Details</button></a>
                                 <a th:href="'/users/delete/' + ${user.id}" onclick="return confirm('Are you sure?')"><button id="deleteBtn">Delete</button></a>
                             </td>
