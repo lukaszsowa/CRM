@@ -10,6 +10,7 @@ import pl.lukaszsowa.CRM.model.User;
 import pl.lukaszsowa.CRM.repository.ContactRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -27,5 +28,9 @@ public class ContactService {
 
     public void deleteContact(long id){
         contactRepository.deleteById(id);
+    }
+
+    public Optional<Contact> getContactById(long id){
+       return contactRepository.findById(id);
     }
 }

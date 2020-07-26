@@ -14,6 +14,7 @@ import pl.lukaszsowa.CRM.service.UserService;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Controller
 public class ContactsController {
@@ -64,5 +65,14 @@ public class ContactsController {
     public String deleteContact(@PathVariable("id") long id){
         contactService.deleteContact(id);
         return "redirect:/contacts";
+    }
+
+    @RequestMapping(value = "/contacts/{id}", method = RequestMethod.GET)
+    public String getContactDetails(@PathVariable("id") long id, Model model){
+        getLoggedUserInfo(model);
+        Optional<Contact> optionalContact = contactService.getContactById(id);
+        Contact contact = optionalContact.get();
+        model.addAttribute("contact", contact);
+        return "contacts-add";
     }
 }
