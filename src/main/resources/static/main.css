@@ -362,3 +362,35 @@ table {
 {
     height: 46px;
 }
+
+#CompanyContactInfo
+{
+    margin: 20px;
+    height: 230px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #ededed;
+}
+
+#addressInfoHeader
+{
+    background-color: #ededed;
+    height: 18px;
+    text-align: left;
+    padding: 14px;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+#addressInfo
+{
+    margin: 20px;
+    height: 190px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #ededed;
+}
+
+
