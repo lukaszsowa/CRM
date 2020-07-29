@@ -26,6 +26,12 @@ public class CompanyController {
 
     @GetMapping("/companies")
     public String getCompanies(Model model){
+        getLoggedUserInfo(model);
+        return "companies";
+    }
+
+    @GetMapping("/companies/add")
+    public String addCompany(Model model){
         model.addAttribute("contact", new Contact());
         getLoggedUserInfo(model);
         return "companies-add";

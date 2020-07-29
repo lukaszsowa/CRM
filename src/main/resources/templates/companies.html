@@ -2,31 +2,31 @@
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Companies</title>
     <link rel="stylesheet" href="/main.css"/>
     <script type="text/javascript" src="/script.js"></script>
 
 
-
-
 </head>
+
 <body>
 
-    <div id="bar">
-        <div id="userInfo">
-            <p id="fullName" th:text="${fullName}"></p>
-            <p id="role" th:text="${role}"></p>
-        </div>
-        <div id="logo">
-            <img id="logoNav" src="crm.png"/>
-        </div>
-        <div id="logout">
-            <a sec:authorize="isAuthenticated()" href="/logout">
-                <button type="button">LOGOUT</button>
-            </a>
-        </div>
+<div id="bar">
+    <div id="userInfo">
+        <p id="fullName" th:text="${fullName}"></p>
+        <p id="role" th:text="${role}"></p>
     </div>
+    <div id="logo">
+        <img id="logoNav" src="/crm.png"/>
+    </div>
+    <div id="logout">
+        <a sec:authorize="isAuthenticated()" href="/logout">
+            <button type="button">LOGOUT</button>
+        </a>
+    </div>
+</div>
 
+<div id="main">
     <div id="left">
         <div class="menu"><a href="/home"> Home </a></div>
         <div class="menu"><a href="/contacts">Contacts</a></div>
@@ -37,16 +37,18 @@
 
     <div id="right">
         <div id="nav">
-
-            <span th:text="Home"></span>
+            <span>Home / Companies</span>
             <span id="clock"></span>
 
             <script type="text/javascript">
-                showTime();
-            </script>
-
-
+                            showTime();
+                        </script>
+        </div>
+        <div id="addUser">
+            <a href="/companies/add"><button id="addUserBtn"> Add company </button></a>
         </div>
     </div>
+</div>
 </body>
+
 </html>

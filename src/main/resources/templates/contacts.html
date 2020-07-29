@@ -2,7 +2,7 @@
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Contacts</title>
     <link rel="stylesheet" href="/main.css"/>
     <script type="text/javascript" src="/script.js"></script>
 
@@ -29,10 +29,9 @@
     <div id="main">
         <div id="left">
             <div class="menu"><a href="/home"> Home </a></div>
-            <div class="menu"> Contacts </div>
-            <div class="menu"> Companies </div>
-            <div class="menu"> Trainings </div>
-            <div class="menu"> Localizations </div>
+            <div class="menu"><a href="/contacts">Contacts</a></div>
+            <div class="menu"><a href="/companies">Companies</a></div>
+            <div class="menu"><a href="/trainings">Trainings</a></div>
             <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
         </div>
 
