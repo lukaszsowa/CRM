@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Trainings</title>
+    <link rel="stylesheet" href="/main.css"/>
+    <script type="text/javascript" src="/script.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="bar">
+    <div id="userInfo">
+        <p id="fullName" th:text="${fullName}"></p>
+        <p id="role" th:text="${role}"></p>
+    </div>
+    <div id="logo">
+        <img id="logoNav" src="/crm.png"/>
+    </div>
+    <div id="logout">
+        <a sec:authorize="isAuthenticated()" href="/logout">
+            <button type="button">LOGOUT</button>
+        </a>
+    </div>
+</div>
+
+<div id="main">
+    <div id="left">
+        <div class="menu"><a href="/home"> Home </a></div>
+        <div class="menu"><a href="/contacts">Contacts</a></div>
+        <div class="menu"><a href="/companies">Companies</a></div>
+        <div class="menu"><a href="/trainings">Trainings</a></div>
+        <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
+    </div>
+
+    <div id="right">
+        <div id="nav">
+            <span>Home / Trainings</span>
+            <span id="clock"></span>
+
+            <script type="text/javascript">
+                            showTime();
+                        </script>
+        </div>
+        <div id="addUser">
+            <a href="/trainings/add"><button id="addUserBtn"> Add training </button></a>
+        </div>
+<!--        <div id="userTbl">-->
+<!--            <table id="usersList">-->
+<!--                <thead>-->
+<!--                <th> ID </th>-->
+<!--                <th> First name</th>-->
+<!--                <th> Last name</th>-->
+<!--                <th> Company</th>-->
+<!--                <th> E-mail</th>-->
+<!--                <th class="actionBtn">        </th>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr th:each="contact : ${contacts}">-->
+<!--                    <td th:text="${contact.id}"></td>-->
+<!--                    <td th:text="${contact.firstName}"></td>-->
+<!--                    <td th:text="${contact.lastName}"></td>-->
+<!--                    <td th:text="${contact.company}"></td>-->
+<!--                    <td th:text="${contact.email}"></td>-->
+<!--                    <td class="actionBtn">-->
+<!--                        <a th:href="'/contacts/' + ${contact.id}"><button  id="detailsBtn">Details</button></a>-->
+<!--                        <a th:href="'/contacts/delete/' + ${contact.id}" onclick="return confirm('Are you sure?')"><button id="deleteBtn">Delete</button></a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+    </div>
+</div>
+</body>
+
+</html>
