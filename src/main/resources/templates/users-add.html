@@ -45,13 +45,11 @@
     <div id="registration">
         <form th:action="@{/save-user}" method="post" th:object="${user}">
 
-            <p th:errors="*" class="error"></p>
-
-            <input id="firstName" type="text" placeholder="First name" th:field="*{firstName}"><br>
-            <input id="lastName" type="text" placeholder="Last name" th:field="*{lastName}"><br>
-            <input id="login" type="text" placeholder="User name" th:field="*{login}"><br>
-            <input id="email" type="text" placeholder="E-mail" th:field="*{email}"><br>
-            <input id="password" type="password" placeholder="Password" th:field="*{password}"><br>
+            <input type="text" placeholder="First name" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')}? usersError : usersAdd"/><br>
+            <input type="text" placeholder="Last name" th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')}? usersError : usersAdd"/><br>
+            <input type="text" placeholder="User name" th:field="*{login}" th:class="${#fields.hasErrors('login')}? usersError : usersAdd"/><br>
+            <input type="text" placeholder="E-mail" th:field="*{email}" th:class="${#fields.hasErrors('email')}? usersError : usersAdd"/><br>
+            <input type="password" placeholder="Password" th:field="*{password}" th:class="${#fields.hasErrors('password')}? usersError : usersAdd"/><br>
             <input value="Save" type="submit">
         </form>
     </div>

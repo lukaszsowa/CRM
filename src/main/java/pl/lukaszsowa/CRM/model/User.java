@@ -24,20 +24,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "Enter first name")
+    @NotBlank
     private String firstName;
 
-    @NotBlank(message = "Enter last name")
+    @NotBlank
     private String lastName;
 
-    @NotBlank(message = "Enter login")
+    @NotBlank
     private String login;
 
     @Email
-    @NotBlank(message = "Enter e-mail")
+    @NotBlank
     private String email;
 
-    @NotBlank(message = "Enter password")
+    @NotBlank
     private String password;
 
     @ManyToOne

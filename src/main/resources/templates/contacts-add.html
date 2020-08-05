@@ -53,14 +53,14 @@
                     <span class="addContactsTheme"> First name</span>
                 </div>
                 <div class="addBlock">
-                    <input class="addInput" th:field="*{firstName}">
+                    <input th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')}? addError : addInput"/>
                     <input type="hidden" th:field="*{id}">
                 </div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> Last name</span>
                 </div>
                 <div class="addBlock">
-                    <input class="addInput" th:field="*{lastName}">
+                    <input th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')}? addError : addInput"/>
                 </div>
             </div>
 
@@ -69,13 +69,13 @@
                     <span class="addContactsTheme"> Job title</span>
                 </div>
                 <div class="addBlock">
-                    <input class="addInput" th:field="*{jobTitle}">
+                    <input th:field="*{jobTitle}" th:class="${#fields.hasErrors('jobTitle')}? addError : addInput"/>
                 </div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> Lead source</span>
                 </div>
                 <div class="addBlock">
-                    <input class="addInput" th:field="*{leadSource}">
+                    <input th:field="*{company}" th:class="${#fields.hasErrors('company')}? addError : addInput"/>
                 </div>
             </div>
 
@@ -84,13 +84,22 @@
                     <span class="addContactsTheme"> Company</span>
                 </div>
                 <div class="addBlock">
-                    <input class="addInput" th:field="*{company}">
+                    <select th:class="addSelect" th:field="*{leadSource}">
+                        <option value="Incoming call">Incoming call</option>
+                        <option value="E-mail">E-mail</option>
+                        <option value="Form">Form</option>
+                        <option value="Training">Training</option>
+                    </select>
                 </div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> Status</span>
                 </div>
                 <div class="addBlock">
-                    <input class="addInput" th:field="*{status}">
+                    <select th:class="addSelect" th:field="*{status}">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+<!--                    <input th:field="*{status}" th:class="${#fields.hasErrors('status')}? addError : addInput"/>-->
                 </div>
             </div>
 
@@ -103,13 +112,13 @@
                     <span class="addContactsTheme"> Phone</span>
                 </div>
                 <div class="addBlock">
-                    <input class="addInput" th:field="*{phone}">
+                    <input class="addInput" th:field="*{phone}" th:class="${#fields.hasErrors('phone')}? addError : addInput"/>
                 </div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> E-mail</span>
                 </div>
                 <div class="addBlock">
-                    <input class="addInput" th:field="*{email}">
+                    <input class="addInput" th:field="*{email}" th:class="${#fields.hasErrors('email')}? addError : addInput"/>
                 </div>
             </div>
 

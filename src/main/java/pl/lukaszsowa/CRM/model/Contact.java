@@ -23,30 +23,30 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Enter first name!")
+    @NotBlank
     private String firstName;
 
-    @NotBlank(message = "Enter last name!")
+    @NotBlank
     private String lastName;
 
-    @NotBlank(message="Enter job title!")
+    @NotBlank
     private String jobTitle;
 
-    @NotBlank(message = "Enter lead source!")
+    @NotBlank
     private String leadSource;
 
-    @NotBlank(message = "Enter status!")
+    @NotBlank
     private String status;
 
-    @NotBlank(message = "Enter company!")
+    @NotBlank
     private String company;
 
-    @NotBlank(message = "Enter phone number!")
+    @NotBlank
     private String phone;
 
     private boolean doNotCall;
 
-    @NotBlank(message = "Enter e-mail")
+    @NotBlank
     private String email;
 
     private boolean emailOutput;

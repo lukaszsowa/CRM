@@ -81,17 +81,6 @@ body
     width: 94%;
 }
 
-input[type=password], input[type=text]
-{
-    width: 300px;
-    height: 20px;
-    font-size: 15px;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid #333333;
-}
-
 input[type=submit]
 {
     width: 150px;
@@ -325,7 +314,7 @@ table {
 {
     height: 60px;
     padding-top: 10px;
-    width: 256px;
+    width: 286px;
     float: left;
 }
 
@@ -333,7 +322,7 @@ table {
 {
     height: 60px;
     padding-top: 10px;
-    width: 256px;
+    width: 226px;
     float: left;
     text-align: right;
 }
@@ -391,6 +380,68 @@ table {
     border-width: 1px;
     border-radius: 5px;
     border-color: #ededed;
+}
+
+.usersAdd
+{
+    width: 300px;
+    height: 20px;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #333333;
+}
+
+.fieldError
+{
+    border:1px solid red;
+}
+
+.loginInput
+{
+    width: 300px;
+    height: 20px;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #333333;
+}
+
+.usersError
+{
+    width: 300px;
+    height: 20px;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border:1px solid red;
+}
+
+.addInput
+{
+    border: 1px solid #ededed;
+    width: 187px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.addError
+{
+    border: 1px solid red;
+    width: 187px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.addSelect
+{
+    border: 1px solid #ededed;
+    width: 187px;
+    height: 25px;
+    border-radius: 5px;
 }
 
 
