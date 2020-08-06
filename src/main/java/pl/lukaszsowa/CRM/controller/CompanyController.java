@@ -5,15 +5,26 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import pl.lukaszsowa.CRM.model.Company;
 import pl.lukaszsowa.CRM.model.Contact;
+import pl.lukaszsowa.CRM.service.CompanyService;
 import pl.lukaszsowa.CRM.service.UserService;
+
+import javax.validation.Valid;
+import java.time.LocalDateTime;
 
 @Controller
 public class CompanyController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    CompanyService companyService;
 
     public void getLoggedUserInfo(Model model) {
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
@@ -32,8 +43,20 @@ public class CompanyController {
 
     @GetMapping("/companies/add")
     public String addCompany(Model model){
-        model.addAttribute("contact", new Contact());
+        model.addAttribute("company", new Company());
         getLoggedUserInfo(model);
         return "companies-add";
+    }
+
+    @PostMapping("/save-company")
+    public String saveCompany(@Valid @ModelAttribute Company company, BindingResult bindingResult, Model model){
+        getLoggedUserInfo(model);
+        if(bindingResult.hasErrors()){
+            return "companies-add";
+        } else {
+            model.addAttribute("company", new Company());
+            companyService.addCompany(company);
+        }
+        return "redirect:/companies";
     }
 }

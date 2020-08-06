@@ -72,7 +72,7 @@
                     <input th:field="*{jobTitle}" th:class="${#fields.hasErrors('jobTitle')}? addError : addInput"/>
                 </div>
                 <div class="addBlockText">
-                    <span class="addContactsTheme"> Lead source</span>
+                    <span class="addContactsTheme"> Company</span>
                 </div>
                 <div class="addBlock">
                     <input th:field="*{company}" th:class="${#fields.hasErrors('company')}? addError : addInput"/>
@@ -81,7 +81,7 @@
 
             <div>
                 <div class="addBlockText">
-                    <span class="addContactsTheme"> Company</span>
+                    <span class="addContactsTheme"> Lead source</span>
                 </div>
                 <div class="addBlock">
                     <select th:class="addSelect" th:field="*{leadSource}">

@@ -22,51 +22,51 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Enter company name!")
+    @NotBlank
     private String companyName;
 
-    @NotBlank(message = "Enter NIP!")
+    @NotBlank
     private String nip;
 
-    @NotBlank(message = "Enter segment!")
+    @NotBlank
     private String segment;
 
-    @NotBlank(message = "Enter industry!")
+    @NotBlank
     private String industry;
 
-    @NotBlank(message = "Enter lead source!")
+    @NotBlank
     private String leadSource;
 
-    @NotBlank(message = "Enter company status!")
+    @NotBlank
     private String status;
 
-    @NotBlank(message = "Enter phone!")
+    @NotBlank
     private String phone;
 
-    @NotBlank(message = "Enter e-mail!")
+    @NotBlank
     private String email;
 
-    @NotBlank(message = "Enter website!")
+    @NotBlank
     private String website;
 
-    @NotBlank(message = "Enter fax!")
+    @NotBlank
     private String fax;
 
     private Boolean permissionToCall;
 
     private Boolean permissionToEmail;
 
-    @NotBlank(message = "Enter street!")
+    @NotBlank
     private String street;
 
-    @NotBlank(message = "Enter city!")
+    @NotBlank
     private String city;
 
-    @NotBlank(message = "Enter post code!")
+    @NotBlank
     private String postCode;
 
-    @NotBlank(message = "Enter country!")
-    private String Country;
+    @NotBlank
+    private String country;
 
 
 

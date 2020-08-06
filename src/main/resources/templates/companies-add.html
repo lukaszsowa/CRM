@@ -45,7 +45,7 @@
             </script>
         </div>
 
-        <form th:action="@{/save-contact}" method="post" th:object="${contact}">
+        <form th:action="@{/save-company}" method="post" th:object="${company}">
 
             <div id="basicInfo">
                 <div id="basicInfoHeader"> Basic information </div>
@@ -54,14 +54,14 @@
                         <span class="addContactsTheme"> Company name</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{phone}">
+                        <input th:field="*{companyName}" th:class="${#fields.hasErrors('companyName')}? addError : addInput"/>
                         <input type="hidden" th:field="*{id}">
                     </div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> NIP</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{phone}">
+                        <input th:field="*{nip}" th:class="${#fields.hasErrors('nip')}? addError : addInput"/>
                     </div>
                 </div>
 
@@ -70,13 +70,13 @@
                         <span class="addContactsTheme"> Segment</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{phone}">
+                        <input th:field="*{segment}" th:class="${#fields.hasErrors('segment')}? addError : addInput"/>
                     </div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> Industry</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{phone}">
+                        <input th:field="*{industry}" th:class="${#fields.hasErrors('industry')}? addError : addInput"/>
                     </div>
                 </div>
 
@@ -85,13 +85,13 @@
                         <span class="addContactsTheme"> Lead source</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{company}">
+                        <input th:field="*{leadSource}" th:class="${#fields.hasErrors('leadSource')}? addError : addInput"/>
                     </div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> Status</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{status}">
+                        <input th:field="*{status}" th:class="${#fields.hasErrors('status')}? addError : addInput"/>
                     </div>
                 </div>
 
@@ -104,13 +104,13 @@
                         <span class="addContactsTheme"> Phone</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{phone}">
+                        <input th:field="*{phone}" th:class="${#fields.hasErrors('phone')}? addError : addInput"/>
                     </div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> E-mail</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{email}">
+                        <input th:field="*{email}" th:class="${#fields.hasErrors('email')}? addError : addInput"/>
                     </div>
                 </div>
 
@@ -119,13 +119,13 @@
                         <span class="addContactsTheme"> Website</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{phone}">
+                        <input th:field="*{website}" th:class="${#fields.hasErrors('website')}? addError : addInput"/>
                     </div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> Fax</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{phone}">
+                        <input th:field="*{fax}" th:class="${#fields.hasErrors('fax')}? addError : addInput"/>
                     </div>
                 </div>
 
@@ -134,13 +134,13 @@
                         <span class="addContactsTheme"> Permission to call</span>
                     </div>
                     <div class="addBlock">
-                        <input type="checkbox" th:field="*{doNotCall}">
+                        <input type="checkbox" th:field="*{permissionToCall}">
                     </div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> Permission to send e-mail</span>
                     </div>
                     <div class="addBlock">
-                        <input type="checkbox" th:field="*{emailOutput}">
+                        <input type="checkbox" th:field="*{permissionToEmail}">
                     </div>
                 </div>
             </div>
@@ -153,13 +153,13 @@
                         <span class="addContactsTheme"> Street</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{phone}">
+                        <input th:field="*{street}" th:class="${#fields.hasErrors('street')}? addError : addInput"/>
                     </div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> City</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{email}">
+                        <input th:field="*{city}" th:class="${#fields.hasErrors('city')}? addError : addInput"/>
                     </div>
                 </div>
 
@@ -168,13 +168,13 @@
                         <span class="addContactsTheme"> Post Code</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{email}">
+                        <input th:field="*{postCode}" th:class="${#fields.hasErrors('postCode')}? addError : addInput"/>
                     </div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> Country</span>
                     </div>
                     <div class="addBlock">
-                        <input class="addInput" th:field="*{email}">
+                        <input th:field="*{country}" th:class="${#fields.hasErrors('country')}? addError : addInput"/>
                     </div>
                 </div>
             </div>
