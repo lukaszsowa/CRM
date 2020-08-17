@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import pl.lukaszsowa.CRM.model.Training;
 import pl.lukaszsowa.CRM.service.UserService;
 
 @Controller
@@ -27,5 +28,14 @@ public class TrainingController {
     public String getTrainings(Model model){
         getLoggedUserInfo(model);
         return "trainings";
+    }
+
+    @GetMapping("/trainings/add")
+    public String addTraining(Model model){
+        getLoggedUserInfo(model);
+        model.addAttribute("training", new Training());
+        return "trainings-add";
+
+
     }
 }

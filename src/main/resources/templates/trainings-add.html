@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts add</title>
+    <link rel="stylesheet" href="/main.css"/>
+    <script type="text/javascript" src="/script.js"></script>
+
+
+
+
+</head>
+<body>
+
+<div id="bar">
+    <div id="userInfo">
+        <p id="fullName" th:text="${fullName}"></p>
+        <p id="role" th:text="${role}"></p>
+    </div>
+    <div id="logo">
+        <img id="logoNav" src="/crm.png"/>
+    </div>
+    <div id="logout">
+        <a sec:authorize="isAuthenticated()" href="/logout">
+            <button type="button">LOGOUT</button>
+        </a>
+    </div>
+</div>
+
+<div id="left">
+    <div class="menu"><a href="/home"> Home </a></div>
+    <div class="menu"><a href="/contacts">Contacts</a></div>
+    <div class="menu"><a href="/companies">Companies</a></div>
+    <div class="menu"><a href="/trainings">Trainings</a></div>
+    <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
+</div>
+
+<div id="right">
+    <div id="nav">
+        <span>Home / Contacts / Add contact</span>
+        <span id="clock"></span>
+        <script type="text/javascript">
+                showTime();
+            </script>
+    </div>
+
+    <form th:action="@{/save-training}" method="post" th:object="${training}">
+
+        <div id="basicInfo">
+            <div id="basicInfoHeader"> Basic information </div>
+            <div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Date start </span>
+                </div>
+                <div class="addBlock">
+                    <input th:field="*{dateStart}" th:class="${#fields.hasErrors('dateStart')}? addError : addInput"/>
+                    <input type="hidden" th:field="*{id}">
+                </div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Date end </span>
+                </div>
+                <div class="addBlock">
+                    <input th:field="*{dateEnd}" th:class="${#fields.hasErrors('dateEnd')}? addError : addInput"/>
+                </div>
+            </div>
+
+            <div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Localization </span>
+                </div>
+                <div class="addBlock">
+                    <input th:field="*{localization}" th:class="${#fields.hasErrors('localization')}? addError : addInput"/>
+                </div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Trainer </span>
+                </div>
+                <div class="addBlock">
+                    <input th:field="*{trainer}" th:class="${#fields.hasErrors('trainer')}? addError : addInput"/>
+                </div>
+            </div>
+
+            <div>                                                                                                               
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Capacity </span>
+                </div>
+                <div class="addBlock">
+                    <input th:field="*{capacity}" th:class="${#fields.hasErrors('capacity')}? addError : addInput"/>
+                </div>
+                <div class="addBlockText">
+                    <span class="addContactsTheme"> Free places </span>
+                </div>
+                <div class="addBlock">
+                    <input th:field="*{freePlaces}" th:class="${#fields.hasErrors('freePlaces')}? addError : addInput"/>
+                </div>
+            </div>
+
+        <input value="Save" type="submit">
+    </form>
+
+
+</div>
+</body>
+</html>
