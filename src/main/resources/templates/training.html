@@ -37,7 +37,7 @@
 
     <div id="right">
         <div id="nav">
-            <span>Home / Trainings</span>
+            <span>Home / Contacts</span>
             <span id="clock"></span>
 
             <script type="text/javascript">
@@ -47,11 +47,31 @@
         <div id="addUser">
             <a href="/training/add"><button id="addUserBtn"> Add training </button></a>
         </div>
-
-        <div class="popup" onclick="myFunction()">Click me!
-            <span class="popuptext" id="myPopup">Popup text...</span>
+        <div id="userTbl">
+            <table id="usersList">
+                <thead>
+                <th> ID </th>
+                <th> Date start</th>
+                <th> Localization</th>
+                <th> Trainer</th>
+                <th> Capacity</th>
+                <th class="actionBtn">        </th>
+                </thead>
+                <tbody>
+                <tr th:each="training : ${trainingsList}">
+                    <td th:text="${training.id}"></td>
+                    <td th:text="${training.dateStart}"></td>
+                    <td th:text="${training.localization}"></td>
+                    <td th:text="${training.trainer}"></td>
+                    <td th:text="${training.capacity}"></td>
+                    <td class="actionBtn">
+                        <a th:href="'/training/' + ${training.id}"><button  id="detailsBtn">Details</button></a>
+                        <a th:href="'/training/delete/' + ${training.id}" onclick="return confirm('Are you sure?')"><button id="deleteBtn">Delete</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-
     </div>
 </div>
 </body>

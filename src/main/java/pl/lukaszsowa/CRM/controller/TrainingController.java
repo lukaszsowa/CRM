@@ -6,14 +6,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.Training;
 import pl.lukaszsowa.CRM.service.TrainingService;
 import pl.lukaszsowa.CRM.service.UserService;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class TrainingController {
@@ -36,6 +36,7 @@ public class TrainingController {
     @GetMapping("/training")
     public String getTrainings(Model model) {
         getLoggedUserInfo(model);
+        model.addAttribute("trainingsList", trainingService.getAllTrainings());
         return "training";
     }
 
@@ -58,6 +59,21 @@ public class TrainingController {
             trainingService.addTraining(training);
         }
         return "redirect:/training";
+    }
+
+    @RequestMapping(value = "/training/delete/{id}", method = RequestMethod.GET)
+    public String deleteTraining(@PathVariable("id") long id){
+        trainingService.deleteTraining(id);
+        return "redirect:/training";
+    }
+
+    @RequestMapping(value = "/training/{id}", method = RequestMethod.GET)
+    public String getTraining(@PathVariable("id") long id, Model model){
+        getLoggedUserInfo(model);
+        Optional<Training> trainingOptional = trainingService.getTrainingById(id);
+        Training training = trainingOptional.get();
+        model.addAttribute("training", training);
+        return "training-add";
     }
 
 

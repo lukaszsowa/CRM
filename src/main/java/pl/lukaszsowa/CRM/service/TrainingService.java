@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import pl.lukaszsowa.CRM.model.Training;
 import pl.lukaszsowa.CRM.repository.TrainingRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class TrainingService {
 
@@ -13,5 +16,17 @@ public class TrainingService {
 
     public Training addTraining(Training training){
         return trainingRepository.save(training);
+    }
+
+    public List<Training> getAllTrainings(){
+        return trainingRepository.findAll();
+    }
+
+    public void deleteTraining(long id){
+        trainingRepository.deleteById(id);
+    }
+
+    public Optional<Training> getTrainingById(long id){
+        return trainingRepository.findById(id);
     }
 }
