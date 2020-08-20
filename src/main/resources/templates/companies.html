@@ -32,12 +32,12 @@
         <div class="menu"><a href="/contacts">Contacts</a></div>
         <div class="menu"><a href="/companies">Companies</a></div>
         <div class="menu"><a href="/training">Trainings</a></div>
-        <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
+        <div class="menu" sec:authorize="hasAuthority('ROLE_ADMIN')"><a href="/users"> Users </a></div>
     </div>
 
     <div id="right">
         <div id="nav">
-            <span>Home / Companies</span>
+            <span>Home / Contacts</span>
             <span id="clock"></span>
 
             <script type="text/javascript">
@@ -47,6 +47,32 @@
         <div id="addUser">
             <a href="/companies/add"><button id="addUserBtn"> Add company </button></a>
         </div>
+        <div id="userTbl">
+            <table id="usersList">
+                <thead>
+                <th> ID </th>
+                <th> Company name</th>
+                <th> NIP</th>
+                <th> Segment</th>
+                <th> Industry</th>
+                <th class="actionBtn">        </th>
+                </thead>
+                <tbody>
+                <tr th:each="company : ${companiesList}">
+                    <td th:text="${company.id}"></td>
+                    <td th:text="${company.companyName}"></td>
+                    <td th:text="${company.nip}"></td>
+                    <td th:text="${company.segment}"></td>
+                    <td th:text="${company.industry}"></td>
+                    <td class="actionBtn">
+                        <a th:href="'/companies/' + ${company.id}"><button  id="detailsBtn">Details</button></a>
+                        <a th:href="'/companies/delete/' + ${company.id}" onclick="return confirm('Are you sure?')"><button id="deleteBtn">Delete</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     </div>
 </div>
 </body>

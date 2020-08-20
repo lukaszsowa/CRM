@@ -6,6 +6,9 @@ import pl.lukaszsowa.CRM.model.Company;
 import pl.lukaszsowa.CRM.repository.CompanyRepository;
 import pl.lukaszsowa.CRM.repository.ContactRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CompanyService {
 
@@ -14,5 +17,17 @@ public class CompanyService {
 
     public Company addCompany(Company company){
         return companyRepository.save(company);
+    }
+
+    public List<Company> getCompanies(){
+        return companyRepository.findAll();
+    }
+
+    public void deleteCompany(long id){
+        companyRepository.deleteById(id);
+    }
+
+    public Optional<Company> getCompanyById(long id){
+        return companyRepository.findById(id);
     }
 }
