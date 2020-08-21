@@ -54,21 +54,26 @@
                     <th> First name</th>
                     <th> Last name</th>
                     <th> Company</th>
+                    <th> Job title</th>
                     <th> E-mail</th>
-                    <th class="actionBtn">        </th>
                     </thead>
                     <tbody>
-                    <tr th:each="contact : ${contacts}">
-                        <td th:text="${contact.id}"></td>
-                        <td th:text="${contact.firstName}"></td>
-                        <td th:text="${contact.lastName}"></td>
-                        <td th:text="${contact.company}"></td>
-                        <td th:text="${contact.email}"></td>
-                        <td class="actionBtn">
-                            <a th:href="'/contacts/' + ${contact.id}"><button  id="detailsBtn">Details</button></a>
-                            <a th:href="'/contacts/delete/' + ${contact.id}" onclick="return confirm('Are you sure?')"><button id="deleteBtn">Delete</button></a>
-                        </td>
-                    </tr>
+                        <tr th:each="contact : ${contacts}">
+                            <td>
+                                <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.id}"></a>
+                            </td>
+                            <td>
+                                <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.firstName}"></a>
+                            </td>
+                            <td>
+                                <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.lastName}"></a>
+                            </td>
+                            <td th:text="${contact.company}"></td>
+                            <td>
+                                <a class="tableLink" th:href="'mailto:' + ${contact.email}" th:text="${contact.email}"></a>
+                            </td>
+                            <td th:text="${contact.jobTitle}"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

@@ -38,33 +38,33 @@ public class ContactsController {
     public String getContact(Model model){
         getLoggedUserInfo(model);
         model.addAttribute("contacts", contactService.getContacts());
-        return "contacts";
+        return "contact-list";
     }
 
     @GetMapping("contacts/add")
     public String addUser(Model model){
         model.addAttribute("contact", new Contact());
         getLoggedUserInfo(model);
-        return "contacts-add";
+        return "contact-add";
     }
 
     @PostMapping("/save-contact")
     public String saveContact(@Valid @ModelAttribute Contact contact, BindingResult bindingResult, Model model){
         getLoggedUserInfo(model);
         if(bindingResult.hasErrors()){
-            return "contacts-add";
+            return "contact-add";
         } else {
             model.addAttribute("contact", new Contact());
             contact.setCreateTime(LocalDateTime.now());
             contactService.addContact(contact);
         }
-        return "redirect:/contacts";
+        return "redirect:/contact-list";
     }
 
     @RequestMapping(value = "/contacts/delete/{id}", method = RequestMethod.GET)
     public String deleteContact(@PathVariable("id") long id){
         contactService.deleteContact(id);
-        return "redirect:/contacts";
+        return "redirect:/contact-list";
     }
 
     @RequestMapping(value = "/contacts/{id}", method = RequestMethod.GET)
@@ -73,6 +73,6 @@ public class ContactsController {
         Optional<Contact> optionalContact = contactService.getContactById(id);
         Contact contact = optionalContact.get();
         model.addAttribute("contact", contact);
-        return "contacts-add";
+        return "contact-details";
     }
 }

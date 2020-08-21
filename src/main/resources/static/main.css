@@ -156,6 +156,26 @@ a:active {
   color: #dbdbdb;
 }
 
+a.tableLink:link {
+  text-decoration: none;
+  color: #000000;
+}
+
+a.tableLink:visited {
+  text-decoration: none;
+  color: #000000;
+}
+
+a.tableLink:hover {
+  text-decoration: underline;
+  color: #000000;
+}
+
+a.tableLink:active {
+  text-decoration: underline;
+  color: #000000;
+}
+
 table, th, td {
   border: 1px solid black;
 }

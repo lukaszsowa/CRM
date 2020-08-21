@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Companies add</title>
+    <link rel="stylesheet" href="/main.css"/>
+    <script type="text/javascript" src="/script.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="bar">
+    <div id="userInfo">
+        <p id="fullName" th:text="${fullName}"></p>
+        <p id="role" th:text="${role}"></p>
+    </div>
+    <div id="logo">
+        <img id="logoNav" src="/crm.png"/>
+    </div>
+    <div id="logout">
+        <a sec:authorize="isAuthenticated()" href="/logout">
+            <button type="button">LOGOUT</button>
+        </a>
+    </div>
+</div>
+
+<div id="main">
+    <div id="left">
+        <div class="menu"><a href="/home"> Home </a></div>
+        <div class="menu"><a href="/contacts">Contacts</a></div>
+        <div class="menu"><a href="/companies">Companies</a></div>
+        <div class="menu"><a href="/training">Trainings</a></div>
+        <div class="menu" sec:authorize="hasAuthority('admin')"><a href="/users"> Users </a></div>
+    </div>
+
+    <div id="right">
+        <div id="nav">
+            <span>Home / Companies</span>
+            <span id="clock"></span>
+
+            <script type="text/javascript">
+                            showTime();
+            </script>
+        </div>
+
+        <form th:action="@{/save-company}" method="post" th:object="${company}">
+            <div id="basicInfo">
+                <div id="basicInfoHeader"> Basic information </div>
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Company name</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{companyName}" readonly/>
+                        <input type="hidden" th:field="*{id}"/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> NIP</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{nip}" readonly/>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Segment</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{segment}" readonly/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Industry</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{industry}" readonly/>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Lead source</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{leadSource}" readonly/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Status</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{status}" readonly/>
+                    </div>
+                </div>
+
+            </div>
+            <div id="CompanyContactInfo">
+                <div id="contactInfoHeader"> Contact information </div>
+
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Phone</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{phone}" readonly/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> E-mail</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{email}" readonly/>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Website</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{website}" readonly/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Fax</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{fax}" readonly/>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Permission to call</span>
+                    </div>
+                    <div class="addBlock">
+                        <input type="checkbox" th:field="*{permissionToCall}" onclick="return false;"/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Permission to send e-mail</span>
+                    </div>
+                    <div class="addBlock">
+                        <input type="checkbox" th:field="*{permissionToEmail}" onclick="return false;"/>
+                    </div>
+                </div>
+            </div>
+
+            <div id="addressInfo">
+                <div id="addressInfoHeader"> Address information </div>
+
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Street</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{street}" readonly/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> City</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{city}" readonly/>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Post Code</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{postCode}" readonly/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Country</span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{country}" readonly/>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+</body>
+
+</html>
