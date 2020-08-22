@@ -44,10 +44,12 @@
             </script>
     </div>
 
+    <div class="actionBar"></div>
+
     <form th:action="@{/save-contact}" method="post" th:object="${contact}">
 
         <div id="basicInfo">
-            <div id="basicInfoHeader"> Basic information </div>
+            <div class="basicInfoHeader"> Basic information </div>
             <div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> First name</span>

@@ -52,22 +52,25 @@
                 <thead>
                 <th> ID </th>
                 <th> Date start</th>
+                <th> Date end</th>
                 <th> Localization</th>
                 <th> Trainer</th>
                 <th> Capacity</th>
-                <th class="actionBtn">        </th>
                 </thead>
                 <tbody>
                 <tr th:each="training : ${trainingsList}">
-                    <td th:text="${training.id}"></td>
-                    <td th:text="${training.dateStart}"></td>
+                    <td>
+                        <a class="tableLink" th:href="'/training/' + ${training.id}" th:text="${training.id}"></a>
+                    </td>
+                    <td>
+                        <a class="tableLink" th:href="'/training/' + ${training.id}" th:text="${training.dateStart}"></a>
+                    </td>
+                    <td>
+                        <a class="tableLink" th:href="'/training/' + ${training.id}" th:text="${training.dateEnd}"></a>
+                    </td>
                     <td th:text="${training.localization}"></td>
                     <td th:text="${training.trainer}"></td>
                     <td th:text="${training.capacity}"></td>
-                    <td class="actionBtn">
-                        <a th:href="'/training/' + ${training.id}"><button  id="detailsBtn">Details</button></a>
-                        <a th:href="'/training/delete/' + ${training.id}" onclick="return confirm('Are you sure?')"><button id="deleteBtn">Delete</button></a>
-                    </td>
                 </tr>
                 </tbody>
             </table>

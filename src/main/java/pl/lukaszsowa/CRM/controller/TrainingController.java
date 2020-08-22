@@ -51,12 +51,13 @@ public class TrainingController {
     public String saveTraining(@Valid @ModelAttribute Training training, BindingResult bindingResult, Model model){
         getLoggedUserInfo(model);
         if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getAllErrors());
             return "training-add";
         } else {
             model.addAttribute("training", new Training());
-
-
             trainingService.addTraining(training);
+
+
         }
         return "redirect:/training";
     }
@@ -73,7 +74,7 @@ public class TrainingController {
         Optional<Training> trainingOptional = trainingService.getTrainingById(id);
         Training training = trainingOptional.get();
         model.addAttribute("training", training);
-        return "training-add";
+        return "training-details";
     }
 
 

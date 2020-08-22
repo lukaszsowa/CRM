@@ -310,7 +310,7 @@ table {
     border-color: #ededed;
 }
 
-#basicInfoHeader
+.basicInfoHeader
 {
     background-color: #ededed;
     height: 18px;
@@ -515,6 +515,10 @@ table {
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
+}
+
+.actionBar
+{
 }
 
 

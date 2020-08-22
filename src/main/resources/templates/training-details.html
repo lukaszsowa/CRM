@@ -53,14 +53,14 @@
                     <span class="addContactsTheme"> Date start </span>
                 </div>
                 <div class="addBlock">
-                    <input type="date" th:field="*{dateStart}" th:class="${#fields.hasErrors('dateStart')}? addError : addInput"/>
+                    <input class="addInput" th:field="*{dateStart}" readonly/>
                     <input type="hidden" th:field="*{id}">
                 </div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> Date end </span>
                 </div>
                 <div class="addBlock">
-                    <input type="date" th:field="*{dateEnd}" th:class="${#fields.hasErrors('dateEnd')}? addError : addInput"/>
+                    <input class="addInput" th:field="*{dateEnd}" readonly/>
                 </div>
             </div>
 
@@ -69,13 +69,13 @@
                     <span class="addContactsTheme"> Localization </span>
                 </div>
                 <div class="addBlock">
-                    <input th:field="*{localization}" th:class="${#fields.hasErrors('localization')}? addError : addInput"/>
+                    <input class="addInput" th:field="*{localization}" readonly/>
                 </div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> Trainer </span>
                 </div>
                 <div class="addBlock">
-                    <input th:field="*{trainer}" th:class="${#fields.hasErrors('trainer')}? addError : addInput"/>
+                    <input class="addInput" th:field="*{trainer}" readonly/>
                 </div>
             </div>
 
@@ -84,20 +84,17 @@
                     <span class="addContactsTheme"> Capacity </span>
                 </div>
                 <div class="addBlock">
-                    <input th:field="*{capacity}" th:class="${#fields.hasErrors('capacity')}? addError : addInput"/>
+                    <input class="addInput" th:field="*{capacity}" readonly/>
                 </div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> Free places </span>
                 </div>
                 <div class="addBlock">
-                    <input th:field="*{freePlaces}" th:class="${#fields.hasErrors('freePlaces')}? addError : addInput" readonly/>
+                    <input class="addInput" th:field="*{freePlaces}" readonly/>
                 </div>
             </div>
-
-        <input value="Save" type="submit">
-   </form>
-
-
+        </div>
+    </form>
 </div>
 </body>
 </html>
