@@ -87,8 +87,8 @@ input[type=submit]
     padding: 11px;
     margin: 15px;
     border-radius: 10px;
-    border: 1px solid #77BD8B;
-    background-color: #77BD8B;
+    border: 1px solid green;
+    background-color: green;
     font-size: 15px;
     color: white;
 }
@@ -189,29 +189,6 @@ table {
   border-collapse: collapse;
 }
 
-#deleteBtn
-{
-    padding: 5px;
-    margin-left: 15px;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    background-color: #FF6A61;
-    font-size: medium;
-    width: 100px;
-}
-
-#detailsBtn
-{
-    padding: 5px;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    background-color: #FED876;
-    font-size: medium;
-    width: 100px;
-}
-
 #backBtn
 {
     width: 150px;
@@ -230,7 +207,7 @@ table {
     border-radius: 4px;
     border: none;
     color: white;
-    background-color: #77BD8B;
+    background-color: green;
     font-size: medium;
     width: 120px;
 }
@@ -240,7 +217,7 @@ table {
     float: left;
     width: 100%;
     margin-top: 30px;
-    margin-left: 50px;
+    margin-left: 40px;
     text-align: left;
 }
 
@@ -292,7 +269,7 @@ table {
 
 #basicInfo
 {
-    margin: 20px;
+    margin: 0px 20px 20px 20px;
     height: 257px;
     border-style: solid;
     border-width: 1px;
@@ -517,8 +494,22 @@ table {
   to {opacity:1 ;}
 }
 
-.actionBar
+#actionBar
 {
+    text-align: right;
+    margin-right: 10px;
+}
+
+#editBtn
+{
+    background-color: green;
+    width: 75px;
+}
+
+#deleteBtn
+{
+    background-color: red;
+    width: 75px;
 }
 
 

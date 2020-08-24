@@ -47,9 +47,10 @@
 
         <form th:action="@{/save-company}" method="post" th:object="${company}">
 
-            <div class="basicInfo">
+            <div style="margin-top: 20px;" id="basicInfo">
+
                 <div class="basicInfoHeader"> Basic information </div>
-                <div>
+
                     <div class="addBlockText">
                         <span class="addContactsTheme"> Company name</span>
                     </div>
@@ -63,9 +64,7 @@
                     <div class="addBlock">
                         <input th:field="*{nip}" th:class="${#fields.hasErrors('nip')}? addError : addInput"/>
                     </div>
-                </div>
 
-                <div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> Segment</span>
                     </div>
@@ -78,7 +77,6 @@
                     <div class="addBlock">
                         <input th:field="*{industry}" th:class="${#fields.hasErrors('industry')}? addError : addInput"/>
                     </div>
-                </div>
 
                 <div>
                     <div class="addBlockText">
@@ -94,8 +92,8 @@
                         <input th:field="*{status}" th:class="${#fields.hasErrors('status')}? addError : addInput"/>
                     </div>
                 </div>
-
             </div>
+
             <div id="CompanyContactInfo">
                 <div id="contactInfoHeader"> Contact information </div>
 

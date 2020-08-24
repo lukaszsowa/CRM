@@ -44,7 +44,7 @@ public class CompanyController {
     @RequestMapping(value = "/companies/delete/{id}", method = RequestMethod.GET)
     public String deleteCompany(@PathVariable("id") long id, Model model){
         companyService.deleteCompany(id);
-        return "redirect:/company";
+        return "redirect:/companies";
     }
 
     @RequestMapping(value="/companies/{id}", method = RequestMethod.GET)
@@ -54,6 +54,15 @@ public class CompanyController {
         Company company = optionalCompany.get();
         model.addAttribute("company", company);
         return "company-details";
+    }
+
+    @RequestMapping(value="/companies/edit/{id}", method = RequestMethod.GET)
+    public String getCompanyEdit(@PathVariable("id") long id, Model model){
+        getLoggedUserInfo(model);
+        Optional<Company> optionalCompany = companyService.getCompanyById(id);
+        Company company = optionalCompany.get();
+        model.addAttribute("company", company);
+        return "company-add";
     }
 
     @GetMapping("/companies/add")
@@ -72,6 +81,6 @@ public class CompanyController {
             model.addAttribute("company", new Company());
             companyService.addCompany(company);
         }
-        return "redirect:/company";
+        return "redirect:/companies/" + company.getId();
     }
 }

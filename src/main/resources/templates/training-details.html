@@ -41,58 +41,63 @@
         <span id="clock"></span>
         <script type="text/javascript">
                 showTime();
-            </script>
+        </script>
+    </div>
+
+    <div id="actionBar">
+        <a th:href="'/training/edit/' + ${training.id}"><button id="editBtn" type="button">Edit</button></a>
+        <a th:href="'/training/delete/' + ${training.id}"><button id="deleteBtn" type="button" onclick="return confirm('Are you sure you want to Remove?');">Delete</button></a>
     </div>
 
     <form th:action="@{/save-training}" method="post" th:object="${training}">
 
         <div id="basicInfo">
             <div class="basicInfoHeader"> Basic information </div>
-            <div>
-                <div class="addBlockText">
-                    <span class="addContactsTheme"> Date start </span>
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Date start </span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{dateStart}" readonly/>
+                        <input type="hidden" th:field="*{id}">
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Date end </span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{dateEnd}" readonly/>
+                    </div>
                 </div>
-                <div class="addBlock">
-                    <input class="addInput" th:field="*{dateStart}" readonly/>
-                    <input type="hidden" th:field="*{id}">
-                </div>
-                <div class="addBlockText">
-                    <span class="addContactsTheme"> Date end </span>
-                </div>
-                <div class="addBlock">
-                    <input class="addInput" th:field="*{dateEnd}" readonly/>
-                </div>
-            </div>
 
-            <div>
-                <div class="addBlockText">
-                    <span class="addContactsTheme"> Localization </span>
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Localization </span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{localization}" readonly/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Trainer </span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{trainer}" readonly/>
+                    </div>
                 </div>
-                <div class="addBlock">
-                    <input class="addInput" th:field="*{localization}" readonly/>
-                </div>
-                <div class="addBlockText">
-                    <span class="addContactsTheme"> Trainer </span>
-                </div>
-                <div class="addBlock">
-                    <input class="addInput" th:field="*{trainer}" readonly/>
-                </div>
-            </div>
 
-            <div>                                                                                                               
-                <div class="addBlockText">
-                    <span class="addContactsTheme"> Capacity </span>
+                <div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Capacity </span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{capacity}" readonly/>
+                    </div>
+                    <div class="addBlockText">
+                        <span class="addContactsTheme"> Free places </span>
+                    </div>
+                    <div class="addBlock">
+                        <input class="addInput" th:field="*{freePlaces}" readonly/>
+                    </div>
                 </div>
-                <div class="addBlock">
-                    <input class="addInput" th:field="*{capacity}" readonly/>
-                </div>
-                <div class="addBlockText">
-                    <span class="addContactsTheme"> Free places </span>
-                </div>
-                <div class="addBlock">
-                    <input class="addInput" th:field="*{freePlaces}" readonly/>
-                </div>
-            </div>
         </div>
     </form>
 </div>

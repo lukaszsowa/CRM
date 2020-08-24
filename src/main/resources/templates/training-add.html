@@ -41,14 +41,14 @@
         <span id="clock"></span>
         <script type="text/javascript">
                 showTime();
-            </script>
+        </script>
     </div>
 
     <form th:action="@{/save-training}" method="post" th:object="${training}">
 
-        <div id="basicInfo">
+        <div style="margin-top: 20px;" id="basicInfo">
             <div class="basicInfoHeader"> Basic information </div>
-            <div>
+                <div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> Date start </span>
                 </div>
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <div>                                                                                                               
+            <div>
                 <div class="addBlockText">
                     <span class="addContactsTheme"> Capacity </span>
                 </div>
@@ -93,6 +93,7 @@
                     <input th:field="*{freePlaces}" th:class="${#fields.hasErrors('freePlaces')}? addError : addInput" readonly/>
                 </div>
             </div>
+        </div>
 
         <input value="Save" type="submit">
    </form>

@@ -58,13 +58,13 @@ public class ContactsController {
             contact.setCreateTime(LocalDateTime.now());
             contactService.addContact(contact);
         }
-        return "redirect:/contact-list";
+        return "redirect:/contacts/" + contact.getId();
     }
 
     @RequestMapping(value = "/contacts/delete/{id}", method = RequestMethod.GET)
     public String deleteContact(@PathVariable("id") long id){
         contactService.deleteContact(id);
-        return "redirect:/contact-list";
+        return "redirect:/contacts";
     }
 
     @RequestMapping(value = "/contacts/{id}", method = RequestMethod.GET)
@@ -74,5 +74,14 @@ public class ContactsController {
         Contact contact = optionalContact.get();
         model.addAttribute("contact", contact);
         return "contact-details";
+    }
+
+    @RequestMapping(value = "/contacts/edit/{id}", method = RequestMethod.GET)
+    public String getContactEdit(@PathVariable("id") long id, Model model){
+        getLoggedUserInfo(model);
+        Optional<Contact> optionalContact = contactService.getContactById(id);
+        Contact contact = optionalContact.get();
+        model.addAttribute("contact", contact);
+        return "contact-add";
     }
 }

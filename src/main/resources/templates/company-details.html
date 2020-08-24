@@ -45,6 +45,11 @@
             </script>
         </div>
 
+        <div id="actionBar">
+            <a th:href="'/companies/edit/' + ${company.id}"><button id="editBtn" type="button">Edit</button></a>
+            <a th:href="'/companies/delete/' + ${company.id}"><button id="deleteBtn" type="button" onclick="return confirm('Are you sure you want to Remove?');">Delete</button></a>
+        </div>
+
         <form th:action="@{/save-company}" method="post" th:object="${company}">
             <div id="basicInfo">
                 <div class="basicInfoHeader"> Basic information </div>
@@ -93,8 +98,8 @@
                         <input class="addInput" th:field="*{status}" readonly/>
                     </div>
                 </div>
-
             </div>
+
             <div id="CompanyContactInfo">
                 <div id="contactInfoHeader"> Contact information </div>
 

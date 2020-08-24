@@ -59,7 +59,7 @@ public class TrainingController {
 
 
         }
-        return "redirect:/training";
+        return "redirect:/training/" + training.getId();
     }
 
     @RequestMapping(value = "/training/delete/{id}", method = RequestMethod.GET)
@@ -75,6 +75,15 @@ public class TrainingController {
         Training training = trainingOptional.get();
         model.addAttribute("training", training);
         return "training-details";
+    }
+
+    @RequestMapping(value = "/training/edit/{id}", method = RequestMethod.GET)
+    public String getTrainingEdit(@PathVariable("id") long id, Model model){
+        getLoggedUserInfo(model);
+        Optional<Training> trainingOptional = trainingService.getTrainingById(id);
+        Training training = trainingOptional.get();
+        model.addAttribute("training", training);
+        return "training-add";
     }
 
 
