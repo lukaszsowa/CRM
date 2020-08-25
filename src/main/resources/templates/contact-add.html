@@ -75,7 +75,35 @@
                     <span class="addContactsTheme"> Company</span>
                 </div>
                 <div class="addBlock">
-                    <input th:field="*{company}" th:class="${#fields.hasErrors('company')}? addError : addInput"/>
+<!--                    <input th:field="*{company}" th:class="${#fields.hasErrors('company')}? addError : addInput"/>-->
+                    <div class="popup" onclick="myFunction()"><input class="addInput" id="companyCheck" value="Choose a company"/>
+                        <span class="popuptext" id="myPopup">
+                            <div id="userTbl">
+                                <table id="usersList">
+                                    <thead>
+                                    <th> ID </th>
+                                    <th> Company name</th>
+                                    <th> NIP</th>
+                                    <th> Segment</th>
+                                    <th> Industry</th>
+                                    <th> City</th>
+                                    <th></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="company : ${companiesList}">
+                                            <td id="companyId" th:text="${company.id}"></td>
+                                            <td th:text="${company.companyName}"></td>
+                                            <td th:text="${company.nip}"></td>
+                                            <td th:text="${company.segment}"></td>
+                                            <td th:text="${company.industry}"></td>
+                                            <td th:text="${company.city}"></td>
+                                            <td><button>Set</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </span>
+                    </div>
                 </div>
             </div>
 
@@ -99,7 +127,6 @@
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
                     </select>
-<!--                    <input th:field="*{status}" th:class="${#fields.hasErrors('status')}? addError : addInput"/>-->
                 </div>
             </div>
 
@@ -140,6 +167,7 @@
 
 
         <input value="Save" type="submit">
+
     </form>
 
 

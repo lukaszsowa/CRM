@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.User;
+import pl.lukaszsowa.CRM.service.CompanyService;
 import pl.lukaszsowa.CRM.service.ContactService;
 import pl.lukaszsowa.CRM.service.UserService;
 
@@ -24,6 +25,9 @@ public class ContactsController {
 
     @Autowired
     ContactService contactService;
+
+    @Autowired
+    CompanyService companyService;
 
     public void getLoggedUserInfo(Model model) {
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
@@ -44,6 +48,7 @@ public class ContactsController {
     @GetMapping("contacts/add")
     public String addUser(Model model){
         model.addAttribute("contact", new Contact());
+        model.addAttribute("companiesList", companyService.getCompanies());
         getLoggedUserInfo(model);
         return "contact-add";
     }

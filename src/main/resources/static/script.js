@@ -13,5 +13,17 @@ function showTime(){
     document.getElementById("clock").textContent = time;
 
     setTimeout(showTime, 1000);
+}
+
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+
+function SetName() {
+    if (window.opener != null && !window.opener.closed) {
+        var companyId = window.opener.document.getElementById("companyId");
+        element.setAttribute(companyCheck, companyId)
     }
+    window.close();
 }

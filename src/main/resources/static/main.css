@@ -441,17 +441,35 @@ table {
     border-radius: 5px;
 }
 
+#actionBar
+{
+    text-align: right;
+    margin-right: 10px;
+}
+
+#editBtn
+{
+    background-color: green;
+    width: 75px;
+}
+
+#deleteBtn
+{
+    background-color: red;
+    width: 75px;
+}
+
 /* Popup container */
 .popup {
   position: relative;
   display: inline-block;
-  cursor: pointer;
 }
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;
-  width: 160px;
+  height: 500px;
+  width: 1000px;
   background-color: #555;
   color: #fff;
   text-align: center;
@@ -459,21 +477,9 @@ table {
   padding: 8px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
-  left: 50%;
+  bottom: -400px;
+  left: -700px;
   margin-left: -80px;
-}
-
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
 }
 
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
@@ -492,24 +498,6 @@ table {
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
-}
-
-#actionBar
-{
-    text-align: right;
-    margin-right: 10px;
-}
-
-#editBtn
-{
-    background-color: green;
-    width: 75px;
-}
-
-#deleteBtn
-{
-    background-color: red;
-    width: 75px;
 }
 
 
