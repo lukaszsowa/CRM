@@ -45,6 +45,12 @@ public class ContactsController {
         return "contact-list";
     }
 
+    @GetMapping("/contacts/contact-company-choice")
+    public String getPopup(Model model){
+        model.addAttribute("companiesList", companyService.getCompanies());
+        return "contact-company-choice";
+    }
+
     @GetMapping("contacts/add")
     public String addUser(Model model){
         model.addAttribute("contact", new Contact());

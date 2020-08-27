@@ -15,15 +15,15 @@ function showTime(){
     setTimeout(showTime, 1000);
 }
 
-function myFunction() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
-}
+function myPopup(myURL, title, myWidth, myHeight) {
+            var left = (screen.width/2) - (myWidth/2);
+            var top = (screen.height/2) - (myHeight/4);
+            var myWindow = window.open(myURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + myWidth + ', height=' + myHeight + ', top=' + top + ', left=' + left);
+         }
 
-function SetName() {
-    if (window.opener != null && !window.opener.closed) {
-        var companyId = window.opener.document.getElementById("companyId");
-        element.setAttribute(companyCheck, companyId)
+
+function post_value(id){
+    opener.document.getElementById("companyChoice").value = document.getElementById("companyId" + id).innerHTML;
+    self.close();
     }
-    window.close();
-}
+
