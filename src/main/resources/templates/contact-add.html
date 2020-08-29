@@ -75,9 +75,9 @@
                     <span class="addContactsTheme"> Company</span>
                 </div>
                 <div class="addBlock">
-<!--                    <input th:field="*{company}" th:class="${#fields.hasErrors('company')}? addError : addInput"/>-->
                         <a href="javascript:void(0);" onClick="myPopup('contact-company-choice', 'Companies', 1200, 450);">
-                            <input class="addInput" id="companyChoice"/>
+                            <input th:field="*{company}" class="addInput" id="companyChoice"/>
+<!--                            <input th:class="${#fields.hasErrors('company')}? addError : addInput" id="companyNameChoice"/>-->
                         </a>
                 </div>
             </div>

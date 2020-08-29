@@ -22,13 +22,15 @@
         <tbody>
         <tr th:each="company : ${companiesList}">
             <td th:id="'companyId' + ${company.id}" th:text="${company.id}"></td>
-            <td id="companyName" th:text="${company.companyName}"></td>
+            <td th:id="${company.companyName}" th:text="${company.companyName}"></td>
             <td id="nip" th:text="${company.nip}"></td>
             <td id="segment" th:text="${company.segment}"></td>
             <td id="industry" th:text="${company.industry}"></td>
             <td id="city" th:text="${company.city}"></td>
-<!--            <td><button th:onclick="post_value('${company.id}');">Set</button></td>-->
             <td><button th:onclick="'javascript:post_value(' + ${company.id} + ')'">Set</button></td>
+<!--            <td><button th:onclick="'javascript:post_value(' + ${company.id} + ')'; 'javascript:post_companyName(' + ${company.companyName} + ')'">Set</button></td>-->
+<!--            <td><button th:onclick="'javascript:post_value('' + ${company.id} + '')'">Set</button></td>-->
+
 
         </tr>
         </tbody>

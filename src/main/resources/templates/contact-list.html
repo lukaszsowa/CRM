@@ -68,7 +68,7 @@
                             <td>
                                 <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.lastName}"></a>
                             </td>
-                            <td th:text="${contact.company}"></td>
+                            <td th:text="${contact.company.companyName}"></td>
                             <td>
                                 <a class="tableLink" th:href="'mailto:' + ${contact.email}" th:text="${contact.email}"></a>
                             </td>

@@ -27,3 +27,8 @@ function post_value(id){
     self.close();
     }
 
+function post_companyName(companyName){
+    opener.document.getElementById("companyNameChoice").value = document.getElementById(companyName).innerHTML;
+    self.close();
+    }
+
