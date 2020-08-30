@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.User;
@@ -15,6 +16,7 @@ import pl.lukaszsowa.CRM.service.UserService;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -47,6 +49,12 @@ public class ContactsController {
 
     @GetMapping("/contacts/contact-company-choice")
     public String getPopup(Model model){
+        model.addAttribute("companiesList", companyService.getCompanies());
+        return "contact-company-choice";
+    }
+
+    @GetMapping("/contacts/edit/contact-company-choice")
+    public String getPopupEdit(Model model){
         model.addAttribute("companiesList", companyService.getCompanies());
         return "contact-company-choice";
     }
@@ -93,6 +101,7 @@ public class ContactsController {
         Optional<Contact> optionalContact = contactService.getContactById(id);
         Contact contact = optionalContact.get();
         model.addAttribute("contact", contact);
+        model.addAttribute("companiesList", companyService.getCompanies());
         return "contact-add";
     }
 }

@@ -46,8 +46,14 @@
         </div>
 
         <div id="actionBar">
-            <a th:href="'/companies/edit/' + ${company.id}"><button id="editBtn" type="button">Edit</button></a>
-            <a th:href="'/companies/delete/' + ${company.id}"><button id="deleteBtn" type="button" onclick="return confirm('Are you sure you want to Remove?');">Delete</button></a>
+            <div id="leftActionBar">
+                <a th:href="'/companies/' + ${company.id}"><button id="summary" type="button">Summary</button></a>
+                <a th:href="'/companies/' + ${company.id} + '/related-contacts'"><button id="related" type="button">Related contacts</button></a>
+            </div>
+            <div id="rightActionBar">
+                <a th:href="'/companies/edit/' + ${company.id}"><button id="editBtn" type="button">Edit</button></a>
+                <a th:href="'/companies/delete/' + ${company.id}"><button id="deleteBtn" type="button" onclick="return confirm('Are you sure you want to Remove?');">Delete</button></a>
+            </div>
         </div>
 
         <form th:action="@{/save-company}" method="post" th:object="${company}">

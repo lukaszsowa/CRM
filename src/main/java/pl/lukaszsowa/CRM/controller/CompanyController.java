@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import pl.lukaszsowa.CRM.model.Company;
 import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.service.CompanyService;
+import pl.lukaszsowa.CRM.service.ContactService;
 import pl.lukaszsowa.CRM.service.UserService;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -24,6 +26,9 @@ public class CompanyController {
 
     @Autowired
     CompanyService companyService;
+
+    @Autowired
+    ContactService contactService;
 
     public void getLoggedUserInfo(Model model) {
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
@@ -54,6 +59,16 @@ public class CompanyController {
         Company company = optionalCompany.get();
         model.addAttribute("company", company);
         return "company-details";
+    }
+
+    @RequestMapping(value="/companies/{id}/related-contacts", method = RequestMethod.GET)
+    public String getRelatedContacts(@PathVariable("id") long id, Model model){
+        getLoggedUserInfo(model);
+        Optional<Company> optionalCompany = companyService.getCompanyById(id);
+        Company company = optionalCompany.get();
+        model.addAttribute("company", company);
+        model.addAttribute("relatedContacts", contactService.getContactsByCompanyId(id));
+        return "company-details-related-contacts";
     }
 
     @RequestMapping(value="/companies/edit/{id}", method = RequestMethod.GET)

@@ -76,8 +76,7 @@
                 </div>
                 <div class="addBlock">
                         <a href="javascript:void(0);" onClick="myPopup('contact-company-choice', 'Companies', 1200, 450);">
-                            <input th:field="*{company}" class="addInput" id="companyChoice"/>
-<!--                            <input th:class="${#fields.hasErrors('company')}? addError : addInput" id="companyNameChoice"/>-->
+                            <input th:field="*{company.id}" class="addInput" id="companyChoice"/>
                         </a>
                 </div>
             </div>
