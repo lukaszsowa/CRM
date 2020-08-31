@@ -493,4 +493,25 @@ table {
     margin-left: 10px;
 }
 
+.recordsCount
+{
+    background-color: #cccccc;
+    color: black;
+    float: left;
+    margin: 20px 30px 20px 30px;
+    width: 370px;
+    height: 150px;
+    border-radius: 30px;
+}
+
+#countInfo
+{
+    display:inline-block;
+}
+
+.countNumber
+{
+    font-size: 100px;
+}
+
 

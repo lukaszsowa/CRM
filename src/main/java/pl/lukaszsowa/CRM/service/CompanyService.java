@@ -30,4 +30,8 @@ public class CompanyService {
     public Optional<Company> getCompanyById(long id){
         return companyRepository.findById(id);
     }
+
+    public Long getCompanyCount(){
+        return companyRepository.count();
+    }
 }

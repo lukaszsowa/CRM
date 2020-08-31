@@ -13,4 +13,6 @@ public interface ContactRepository extends JpaRepository <Contact, Long> {
     @Query("SELECT c FROM Contact c where c.company.id=:id")
     List<Contact> getContactsByCompany(@Param("id") long id);
 
+
+
 }

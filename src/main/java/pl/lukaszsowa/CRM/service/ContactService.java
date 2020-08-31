@@ -37,4 +37,8 @@ public class ContactService {
     public List<Contact> getContactsByCompanyId(long id){
         return (List<Contact>) contactRepository.getContactsByCompany(id);
     }
+
+    public Long getContactsCount(){
+        return contactRepository.count();
+    }
 }

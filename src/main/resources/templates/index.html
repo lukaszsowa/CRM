@@ -37,15 +37,27 @@
 
     <div id="right">
         <div id="nav">
-
             <span th:text="Home"></span>
             <span id="clock"></span>
 
             <script type="text/javascript">
                 showTime();
             </script>
-
-
+        </div>
+        <div id="countInfo">
+            <div class = "recordsCount" style="float:left">
+                <div class="countNumber" th:text="${contactsCount}"></div>
+                <div> Contacts count </div>
+            </div>
+            <div class = "recordsCount" style="float:left">
+                <div class="countNumber" th:text="${companiesCount}"></div>
+                <div> Companies count </div>
+            </div>
+            <div class = "recordsCount" style="float:left">
+                <div class="countNumber" th:text="${trainingsCount}"></div>
+                <div> Trainings count </div>
+            </div>
+            <div style="clear:both"></div>
         </div>
     </div>
 </body>

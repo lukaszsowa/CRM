@@ -29,4 +29,8 @@ public class TrainingService {
     public Optional<Training> getTrainingById(long id){
         return trainingRepository.findById(id);
     }
+
+    public Long getTrainingsCount(){
+        return trainingRepository.count();
+    }
 }
