@@ -83,13 +83,21 @@
                         <span class="addContactsTheme"> Lead source</span>
                     </div>
                     <div class="addBlock">
-                        <input th:field="*{leadSource}" th:class="${#fields.hasErrors('leadSource')}? addError : addInput"/>
+                        <select th:class="addSelect" th:field="*{leadSource}">
+                            <option value="Incoming call">Incoming call</option>
+                            <option value="E-mail">E-mail</option>
+                            <option value="Form">Form</option>
+                            <option value="Training">Training</option>
+                        </select>
                     </div>
                     <div class="addBlockText">
                         <span class="addContactsTheme"> Status</span>
                     </div>
                     <div class="addBlock">
-                        <input th:field="*{status}" th:class="${#fields.hasErrors('status')}? addError : addInput"/>
+                        <select th:class="addSelect" th:field="*{status}">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
                     </div>
                 </div>
             </div>
