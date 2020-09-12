@@ -8,14 +8,22 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.User;
 import pl.lukaszsowa.CRM.service.CompanyService;
 import pl.lukaszsowa.CRM.service.ContactService;
 import pl.lukaszsowa.CRM.service.UserService;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -103,5 +111,31 @@ public class ContactsController {
         model.addAttribute("contact", contact);
         model.addAttribute("companiesList", companyService.getCompanies());
         return "contact-add";
+    }
+
+    @GetMapping("/contacts/export")
+    public void exportToCSV(HttpServletResponse response) throws IOException {
+        response.setContentType("text/csv");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".csv";
+        response.setHeader(headerKey, headerValue);
+
+        List<Contact> contactList = contactService.getContacts();
+
+        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.STANDARD_PREFERENCE);
+        String[] csvHeader = {"First name", "Last name", "E-mail", "Phone", "Job title"};
+        String[] nameMapping = {"firstName", "lastName", "email", "phone", "jobTitle"};
+
+        csvWriter.writeHeader(csvHeader);
+
+        for (Contact contact : contactList) {
+            csvWriter.write(contact, nameMapping);
+        }
+
+        csvWriter.close();
+
     }
 }

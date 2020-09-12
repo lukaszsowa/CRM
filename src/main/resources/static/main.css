@@ -215,7 +215,6 @@ table {
 #addUser
 {
     float: left;
-    width: 100%;
     margin-top: 30px;
     margin-left: 40px;
     text-align: left;
@@ -512,6 +511,25 @@ table {
 .countNumber
 {
     font-size: 100px;
+}
+
+#export
+{
+    float: left;
+    margin-top: 30px;
+    margin-left: 40px;
+    text-align: left;
+}
+
+#exportBtn
+{
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    background-color: #5199FF;
+    font-size: medium;
+    width: 120px;
 }
 
 
