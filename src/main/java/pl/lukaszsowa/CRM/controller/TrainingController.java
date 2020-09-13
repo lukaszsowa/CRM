@@ -7,12 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.Training;
 import pl.lukaszsowa.CRM.service.TrainingService;
 import pl.lukaszsowa.CRM.service.UserService;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -84,6 +93,32 @@ public class TrainingController {
         Training training = trainingOptional.get();
         model.addAttribute("training", training);
         return "training-add";
+    }
+
+    @GetMapping("/training/export")
+    public void exportToCSV(HttpServletResponse response) throws IOException {
+        response.setContentType("text/csv");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".csv";
+        response.setHeader(headerKey, headerValue);
+
+        List<Training> trainingList = trainingService.getAllTrainings();
+
+        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.STANDARD_PREFERENCE);
+        String[] csvHeader = {"Date start", "Date end", "Localization", "Trainer", "Capacity"};
+        String[] nameMapping = {"dateStart", "dateEnd", "localization", "trainer", "capacity"};
+
+        csvWriter.writeHeader(csvHeader);
+
+        for (Training training : trainingList) {
+            csvWriter.write(training, nameMapping);
+        }
+
+        csvWriter.close();
+
     }
 
 
