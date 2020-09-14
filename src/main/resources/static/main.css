@@ -207,7 +207,7 @@ table {
     border-radius: 4px;
     border: none;
     color: white;
-    background-color: green;
+    background-color: #FFD600;
     font-size: medium;
     width: 120px;
 }
@@ -528,6 +528,25 @@ table {
     border: none;
     color: white;
     background-color: #5199FF;
+    font-size: medium;
+    width: 120px;
+}
+
+#exportExcel
+{
+    float: left;
+    margin-top: 30px;
+    margin-left: 40px;
+    text-align: left;
+}
+
+#exportExcelBtn
+{
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    background-color: #117243;
     font-size: medium;
     width: 120px;
 }

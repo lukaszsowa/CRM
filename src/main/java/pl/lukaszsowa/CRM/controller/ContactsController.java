@@ -1,5 +1,6 @@
 package pl.lukaszsowa.CRM.controller;
 
+import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
@@ -19,10 +21,12 @@ import pl.lukaszsowa.CRM.service.UserService;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -138,4 +142,15 @@ public class ContactsController {
         csvWriter.close();
 
     }
+
+    @GetMapping("/contacts/export-excel")
+    public void downloadCsv(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment; filename=contacts.xlsx");
+        ByteArrayInputStream stream = ExcelFileExporter.contactListToExcelFile(contactService.getContacts());
+        IOUtils.copy(stream, response.getOutputStream());
+    }
+
+
+
 }
