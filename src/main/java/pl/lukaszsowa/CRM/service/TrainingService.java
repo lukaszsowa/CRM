@@ -2,6 +2,7 @@ package pl.lukaszsowa.CRM.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.Training;
 import pl.lukaszsowa.CRM.repository.TrainingRepository;
 
@@ -32,5 +33,9 @@ public class TrainingService {
 
     public Long getTrainingsCount(){
         return trainingRepository.count();
+    }
+
+    public List<Training> getTrainings(long id){
+        return trainingRepository.getTrainings(id);
     }
 }

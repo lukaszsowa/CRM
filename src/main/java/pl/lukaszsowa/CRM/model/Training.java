@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Set;
 
 
 @Entity
@@ -39,6 +40,10 @@ public class Training {
 
     @NotBlank
     private String trainer;
+
+    @ManyToMany
+    @JoinTable(name="trainings_contacts", joinColumns = @JoinColumn(name="training_id"), inverseJoinColumns = @JoinColumn(name = "contact_id"))
+    Set<Contact> contactSet;
 
     
 

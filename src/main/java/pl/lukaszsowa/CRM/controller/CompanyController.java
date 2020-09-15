@@ -1,5 +1,6 @@
 package pl.lukaszsowa.CRM.controller;
 
+import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +19,7 @@ import pl.lukaszsowa.CRM.service.UserService;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -131,5 +133,13 @@ public class CompanyController {
 
         csvWriter.close();
 
+    }
+
+    @GetMapping("/companies/export-excel")
+    public void downloadExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment; filename=companies.xlsx");
+        ByteArrayInputStream stream = ExcelFileExporter.companyListToExcelFile(companyService.getCompanies());
+        IOUtils.copy(stream, response.getOutputStream());
     }
 }

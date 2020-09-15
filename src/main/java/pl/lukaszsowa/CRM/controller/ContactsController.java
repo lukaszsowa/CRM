@@ -144,7 +144,7 @@ public class ContactsController {
     }
 
     @GetMapping("/contacts/export-excel")
-    public void downloadCsv(HttpServletResponse response) throws IOException {
+    public void downloadExcel(HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition", "attachment; filename=contacts.xlsx");
         ByteArrayInputStream stream = ExcelFileExporter.contactListToExcelFile(contactService.getContacts());

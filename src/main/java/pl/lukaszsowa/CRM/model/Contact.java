@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Data
@@ -50,5 +51,8 @@ public class Contact {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     private Company company;
+
+    @ManyToMany(mappedBy = "contactSet")
+    Set<Training> trainingSet;
 
 }
