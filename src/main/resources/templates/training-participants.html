@@ -60,6 +60,36 @@
 
         <div id="basicInfo">
             <div class="basicInfoHeader"> Participants </div>
+            <div id="userTbl">
+                <table id="usersList">
+                    <thead>
+                    <th> ID </th>
+                    <th> First name</th>
+                    <th> Last name</th>
+                    <th> Phone</th>
+                    <th> E-mail</th>
+                    <th> Job title</th>
+                    </thead>
+                    <tbody>
+                    <tr th:each="contact : ${participants}">
+                        <td>
+                            <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.id}"></a>
+                        </td>
+                        <td>
+                            <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.firstName}"></a>
+                        </td>
+                        <td>
+                            <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.lastName}"></a>
+                        </td>
+                        <td th:text="${contact.phone}"></td>
+                        <td>
+                            <a class="tableLink" th:href="'mailto:' + ${contact.email}" th:text="${contact.email}"></a>
+                        </td>
+                        <td th:text="${contact.jobTitle}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </form>
 </div>

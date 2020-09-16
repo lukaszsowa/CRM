@@ -35,7 +35,4 @@ public class TrainingService {
         return trainingRepository.count();
     }
 
-    public List<Training> getTrainings(long id){
-        return trainingRepository.getTrainings(id);
-    }
 }

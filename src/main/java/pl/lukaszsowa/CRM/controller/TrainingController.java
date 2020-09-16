@@ -13,9 +13,12 @@ import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.Training;
+import pl.lukaszsowa.CRM.service.ContactService;
 import pl.lukaszsowa.CRM.service.TrainingService;
 import pl.lukaszsowa.CRM.service.UserService;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.ByteArrayInputStream;
@@ -34,6 +37,10 @@ public class TrainingController {
 
     @Autowired
     TrainingService trainingService;
+
+    @Autowired
+    ContactService contactService;
+
 
     public void getLoggedUserInfo(Model model) {
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
@@ -134,15 +141,11 @@ public class TrainingController {
     @RequestMapping(value = "/training/{id}/participants", method = RequestMethod.GET)
     public String getParticipants(@PathVariable("id") long id, Model model){
         getLoggedUserInfo(model);
-        List<Training> trainingList = trainingService.getTrainings(id);
-        for (Training training: trainingList
-             ) {
-            System.out.println(training.getDateStart());
-        }
+        Optional<Training> trainingOptional = trainingService.getTrainingById(id);
+        Training training = trainingOptional.get();
+        model.addAttribute("training", training);
+        List<Contact> contactList = contactService.getParticipants(id);
+        model.addAttribute("participants", contactList);
         return "training-participants";
     }
-
-
-
-
 }

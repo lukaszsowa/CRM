@@ -11,8 +11,6 @@ import java.util.List;
 public interface TrainingRepository extends JpaRepository <Training, Long> {
 
 
-    @Query("SELECT t FROM Training t where t.id=:id")
-    List<Training> getTrainings(@Param("id") long id);
 
 
 }

@@ -41,8 +41,7 @@ public class Training {
     @NotBlank
     private String trainer;
 
-    @ManyToMany
-    @JoinTable(name="trainings_contacts", joinColumns = @JoinColumn(name="training_id"), inverseJoinColumns = @JoinColumn(name = "contact_id"))
+    @ManyToMany(mappedBy = "selectedTrainings")
     Set<Contact> contactSet;
 
     

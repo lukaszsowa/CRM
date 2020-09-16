@@ -52,7 +52,11 @@ public class Contact {
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     private Company company;
 
-    @ManyToMany(mappedBy = "contactSet")
-    Set<Training> trainingSet;
+    @ManyToMany
+    @JoinTable(
+            name = "trainings_contacts",
+            joinColumns = @JoinColumn(name = "contact_id"),
+            inverseJoinColumns = @JoinColumn(name = "training_id"))
+    Set<Training> selectedTrainings;
 
 }
