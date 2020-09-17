@@ -484,6 +484,13 @@ table {
     width: 150px;
 }
 
+#participants
+{
+    background-color: #cccccc;
+    color: black;
+    width: 150px;
+}
+
 #leftActionBar
 {
     text-align: left;

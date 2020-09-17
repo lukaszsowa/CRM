@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact choice</title>
+    <link rel="stylesheet" href="/main.css"/>
+    <script type="text/javascript" src="/script.js"></script>
+
+</head>
+<body>
+
+<table id="usersList">
+    <thead>
+    <th> ID </th>
+    <th> First name</th>
+    <th> Last name</th>
+    <th> Company</th>
+    <th> E-mail</th>
+    <th> Job title</th>
+    <th></th>
+    </thead>
+    <tbody>
+    <tr th:each="contact : ${contactList}">
+        <td id="id" th:text="${contact.id}"></td>
+        <td id="firstName" th:text="${contact.firstName}"></td>
+        <td id="lastName" th:text="${contact.lastName}"></td>
+        <td id="company" th:text="${contact.company.companyName}"></td>
+        <td id="email" th:text="${contact.email}"></td>
+        <td id="jobTitle" th:text="${contact.jobTitle}"></td>
+        <td><a th:href="'/training/' + ${training.id} + '/participant/' + ${contact.id}"><button>Set</button></a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

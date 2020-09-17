@@ -37,7 +37,7 @@
 
 <div id="right">
     <div id="nav">
-        <span>Home / Contacts / Add contact</span>
+        <span>Home / Training / Participants</span>
         <span id="clock"></span>
         <script type="text/javascript">
                 showTime();
@@ -49,6 +49,9 @@
         <div id="leftActionBar">
             <a th:href="'/training/' + ${training.id}"><button id="summary" type="button">Summary</button></a>
             <a th:href="'/training/' + ${training.id} + '/participants'"><button id="related" type="button">Participants</button></a>
+            <a href="javascript:void(0);" onClick="myPopup('training-participants-add', 'Participants', 1200, 450);">
+                <button id="participants" type="button">Add participant</button>
+            </a>
         </div>
         <div id="rightActionBar">
             <a th:href="'/training/edit/' + ${training.id}"><button id="editBtn" type="button">Edit</button></a>

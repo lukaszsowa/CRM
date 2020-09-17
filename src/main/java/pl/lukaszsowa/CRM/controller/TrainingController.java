@@ -1,5 +1,6 @@
 package pl.lukaszsowa.CRM.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -40,6 +41,9 @@ public class TrainingController {
 
     @Autowired
     ContactService contactService;
+
+    @Autowired
+    EntityManager entityManager;
 
 
     public void getLoggedUserInfo(Model model) {
@@ -148,4 +152,16 @@ public class TrainingController {
         model.addAttribute("participants", contactList);
         return "training-participants";
     }
+
+    @RequestMapping(value = "/training/{id}/training-participants-add", method = RequestMethod.GET)
+    public String getChooseParticipant(@PathVariable("id") long id, Model model){
+        Optional<Training> trainingOptional = trainingService.getTrainingById(id);
+        Training training = trainingOptional.get();
+        model.addAttribute("training", training);
+        List<Contact> contactList = contactService.getContacts();
+        model.addAttribute("contactList", contactList);
+        return "training-participants-choice";
+    }
+
+
 }
