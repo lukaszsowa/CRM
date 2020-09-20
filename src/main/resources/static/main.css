@@ -539,6 +539,25 @@ table {
     width: 120px;
 }
 
+#generatePdf
+{
+    float: left;
+    margin-top: 30px;
+    margin-left: 40px;
+    text-align: left;
+}
+
+#generatePdfBtn
+{
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    background-color: #ED1C24;
+    font-size: medium;
+    width: 120px;
+}
+
 #exportExcel
 {
     float: left;

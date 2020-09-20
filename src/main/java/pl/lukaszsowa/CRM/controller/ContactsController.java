@@ -1,7 +1,15 @@
 package pl.lukaszsowa.CRM.controller;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,8 +28,10 @@ import pl.lukaszsowa.CRM.service.ContactService;
 import pl.lukaszsowa.CRM.service.UserService;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.Document;
 import javax.validation.Valid;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -30,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Controller
 public class ContactsController {
@@ -151,6 +162,20 @@ public class ContactsController {
         IOUtils.copy(stream, response.getOutputStream());
     }
 
+    @RequestMapping(value = "/contacts/generate-pdf", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> contactsPdf() throws IOException {
 
+        List<Contact> contactList = (List<Contact>) contactService.getContacts();
 
+        ByteArrayInputStream bis = GeneratePdfReport.contactsPdf(contactList);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=citiesreport.pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
+    }
 }

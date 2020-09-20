@@ -163,5 +163,17 @@ public class TrainingController {
         return "training-participants-choice";
     }
 
-
+    @RequestMapping(value = "/training/{id}/participant/{id2}", method = RequestMethod.GET)
+    public String addRelation(@PathVariable("id") long id, @PathVariable("id2") long id2, Model model){
+        Optional<Training> trainingOptional = trainingService.getTrainingById(id);
+        Training training = trainingOptional.get();
+        model.addAttribute("training", training);
+        List<Contact> contactList = contactService.getContacts();
+        model.addAttribute("contactList", contactList);
+        Query query = entityManager.createNativeQuery("INSERT INTO trainings_contacts (training_id, contact_id) values (1,17)");
+        query.executeUpdate();
+//        query.setParameter(1, id);
+//        query.setParameter(2, id2);
+        return "training-participants-choice";
+    }
 }
