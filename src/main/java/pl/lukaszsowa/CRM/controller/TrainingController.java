@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -163,6 +164,7 @@ public class TrainingController {
         return "training-participants-choice";
     }
 
+    @Transactional
     @RequestMapping(value = "/training/{id}/participant/{id2}", method = RequestMethod.GET)
     public String addRelation(@PathVariable("id") long id, @PathVariable("id2") long id2, Model model){
         Optional<Training> trainingOptional = trainingService.getTrainingById(id);
@@ -170,10 +172,10 @@ public class TrainingController {
         model.addAttribute("training", training);
         List<Contact> contactList = contactService.getContacts();
         model.addAttribute("contactList", contactList);
-        Query query = entityManager.createNativeQuery("INSERT INTO trainings_contacts (training_id, contact_id) values (1,17)");
+        Query query = entityManager.createNativeQuery("INSERT INTO trainings_contacts (training_id, contact_id) values (:id,:id2)");
+        query.setParameter("id", id);
+        query.setParameter("id2", id2);
         query.executeUpdate();
-//        query.setParameter(1, id);
-//        query.setParameter(2, id2);
-        return "training-participants-choice";
+        return "redirect:/training-participants";
     }
 }

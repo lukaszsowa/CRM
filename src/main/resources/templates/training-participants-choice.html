@@ -27,7 +27,9 @@
         <td id="company" th:text="${contact.company.companyName}"></td>
         <td id="email" th:text="${contact.email}"></td>
         <td id="jobTitle" th:text="${contact.jobTitle}"></td>
-        <td><a th:href="'/training/' + ${training.id} + '/participant/' + ${contact.id}"><button>Set</button></a></td>
+        <td>
+            <a th:href="'/training/' + ${training.id} + '/participant/' + ${contact.id}" onclick="window.close()"><button>Set</button></a>
+        </td>
     </tr>
     </tbody>
 </table>
