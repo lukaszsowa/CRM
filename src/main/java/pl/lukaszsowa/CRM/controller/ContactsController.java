@@ -170,7 +170,7 @@ public class ContactsController {
         ByteArrayInputStream bis = GeneratePdfReport.contactsPdf(contactList);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=citiesreport.pdf");
+        headers.add("Content-Disposition", "inline; filename=contacts_report.pdf");
 
         return ResponseEntity
                 .ok()

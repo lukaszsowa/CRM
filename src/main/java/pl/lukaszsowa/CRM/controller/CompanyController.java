@@ -2,6 +2,10 @@ package pl.lukaszsowa.CRM.controller;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -141,5 +145,22 @@ public class CompanyController {
         response.setHeader("Content-Disposition", "attachment; filename=companies.xlsx");
         ByteArrayInputStream stream = ExcelFileExporter.companyListToExcelFile(companyService.getCompanies());
         IOUtils.copy(stream, response.getOutputStream());
+    }
+
+    @RequestMapping(value = "/companies/generate-pdf", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> companiesPdf() throws IOException {
+
+        List<Company> companyList = (List<Company>) companyService.getCompanies();
+
+        ByteArrayInputStream bis = GeneratePdfReport.companiesPdf(companyList);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=companies_report.pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
     }
 }

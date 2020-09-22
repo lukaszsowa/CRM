@@ -46,5 +46,19 @@ public class IndexController {
     String getErrorLogin(){
         return "error-login";
     }
+
+    @GetMapping("/test")
+    String getTest(Model model){
+        Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
+        String login = loggedUser.getName();
+        String fullName = userService.getUser(login).getFirstName() + " " + userService.getUser(login).getLastName();
+        String role = userService.getUser(login).getRole().getRole().toUpperCase();
+        model.addAttribute("fullName", fullName);
+        model.addAttribute("role", role);
+        model.addAttribute("contactsCount", contactService.getContactsCount());
+        model.addAttribute("companiesCount", companyService.getCompanyCount());
+        model.addAttribute("trainingsCount", trainingService.getTrainingsCount());
+        return "test";
+    }
 }
 
