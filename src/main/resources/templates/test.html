@@ -12,18 +12,19 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style>
-	/* Some custom styles to beautify this example */
-    .test1{
+
+    .userInfo{
         background-color: #4A5364;
         height: 50px;
         height: auto;
+        text-align: left;
     }
-    .test2{
+    .logo{
         background-color: #4A5364;
         height: 50px;
         text-align: center;
     }
-    .test3{
+    .logoutBtn{
         background-color: #4A5364;
         height: 50px;
         text-align: right;
@@ -38,7 +39,7 @@
     }
     .content
     {
-        background-color: green;
+
     }
     .menuTest
     {
@@ -64,13 +65,43 @@
     }
     .breadcrumbRight
     {
-        background-color: yellow;
+        background-color: #cccccc;
+        padding: 10px !important;
+        text-align: left;
+        letter-spacing: 3pt;
     }
     .breadcrumbLeft
     {
-        background-color: yellow;
+        background-color: #cccccc;
+        padding: 10px !important;
         text-align: right;
+        letter-spacing: 3pt;
     }
+    .databaseInfo
+    {
+        height: 50px;
+        margin-top: 20px;
+    }
+    .infoBlock
+    {
+        height: auto;
+        text-align: center;
+        background-color: #cccccc;
+        width: 80%;
+        padding: 10px !important;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px
+    }
+    .recordsCount
+    {
+        font-size: 40px;
+    }
+    .recordsCountLbl
+    {
+        font-size: 10px;
+    }
+
     .page
     {
         height: 100%;
@@ -92,15 +123,15 @@
 </style>
 </head>
 <body>
-<div class="row no-gutters">
+<div class="row no-gutters userInfo">
     <div class="col-sm-2 col-3 test1">
         <div class="userName" th:text="${fullName}"></div>
         <div class="userRole" th:text="${role}"></div>
     </div>
-    <div class="col-sm-8 col-6 test2">
+    <div class="col-sm-8 col-6 logo">
         <img class="logoNav" src="crm.png"/>
     </div>
-    <div class="col-sm-2 col-3 test3">
+    <div class="col-sm-2 col-3 logoutBtn">
         <a sec:authorize="isAuthenticated()" href="/logout">
             <button type="button">LOGOUT</button>
         </a>
@@ -116,12 +147,34 @@
         <div class="col-md-12 col-4 menuTest"><a href="/test"> Test </a></div>
     </div>
     <div class="col-md-10 content">
-        <div class="row no-gutters">
+        <div class="row no-gutters breadcrumbAll">
             <div class="col-md-6 col-6 breadcrumbRight" th:text="Home"></div>
-            <div class="col-md-6 col-6 breadcrumbLeft" th:text="Clock"></div>
+            <div class="col-md-6 col-6 breadcrumbLeft" id="clock2">
+                    <script type="text/javascript">
+                        showTime();
+                    </script>
+            </div>
         </div>
-
-
+        <div class="row no-gutters">
+            <div class="col-md-4 col-12 databaseInfo">
+                <div class="col-md-12 infoBlock">
+                    <div class="col-md-12 recordsCount" th:text="${contactsCount}"></div>
+                    <div class="col-md-12 recordsCountLbl"> Contacts count </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 databaseInfo">
+                <div class="col-md-12 infoBlock">
+                    <div class="col-md-12 recordsCount" th:text="${companiesCount}"></div>
+                    <div class="col-md-12 recordsCountLbl"> Companies count </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 databaseInfo">
+                <div class="col-md-12 infoBlock">
+                    <div class="col-md-12 recordsCount" th:text="${trainingsCount}"></div>
+                    <div class="col-md-12 recordsCountLbl"> Trainings count </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

@@ -6,7 +6,7 @@ html
 body
 {
     margin: 0px;
-    text-align: center;
+    text-align: left;
     letter-spacing: 1pt;
     height: 100%;
 }
@@ -153,12 +153,12 @@ a:visited {
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
   color: #dbdbdb;
 }
 
 a:active {
-  text-decoration: underline;
+  text-decoration: none;
   color: #dbdbdb;
 }
 
@@ -354,11 +354,13 @@ table {
 #logoLoginPage
 {
     width: 350px;
+
 }
 
 #loginPage
 {
-    background-color: #CCCCCC
+    background-color: #CCCCCC;
+    text-align: center;
 }
 
 #logoNav
@@ -505,17 +507,6 @@ table {
     margin-left: 10px;
 }
 
-.recordsCount
-{
-    background-color: #cccccc;
-    color: black;
-    float: left;
-    margin: 20px 30px 20px 30px;
-    width: 370px;
-    height: 150px;
-    border-radius: 30px;
-}
-
 #countInfo
 {
     display:inline-block;
@@ -582,5 +573,117 @@ table {
     font-size: medium;
     width: 120px;
 }
+
+.navIcon
+{
+    padding-right: 10px;
+}
+
+    .userInfo{
+        background-color: #4A5364;
+        height: 50px;
+        height: auto;
+    }
+    .logo{
+        background-color: #4A5364;
+        height: 50px;
+        text-align: center;
+    }
+    .logoutBtn{
+        background-color: #4A5364;
+        height: 50px;
+        text-align: right;
+    }
+    .logoNav
+    {
+        height: 46px;
+    }
+    .menuNav
+    {
+        background-color: #4A5364;
+    }
+    .content
+    {
+
+    }
+    .menuTest
+    {
+        color: #dbdbdb;
+        font-weight: bold;
+        background-color: #4A5364;
+        padding: 20px;
+        font-size: 19px;
+    }
+    .userName
+    {
+        padding: 0px 10px 0px 20px;
+        color: #dbdbdb;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .userRole
+    {
+        padding: 0px 0px 0px 20px;
+        color: #dbdbdb;
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 10px;
+    }
+    .breadcrumbRight
+    {
+        background-color: #cccccc;
+        padding: 10px !important;
+        text-align: left;
+        letter-spacing: 3pt;
+    }
+    .breadcrumbLeft
+    {
+        background-color: #cccccc;
+        padding: 10px !important;
+        text-align: right;
+        letter-spacing: 3pt;
+    }
+    .databaseInfo
+    {
+        height: 50px;
+        margin-top: 20px;
+    }
+    .infoBlock
+    {
+        height: auto;
+        text-align: center;
+        background-color: #cccccc;
+        width: 80%;
+        padding: 10px !important;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px
+    }
+    .recordsCount
+    {
+        font-size: 40px;
+    }
+    .recordsCountLbl
+    {
+        font-size: 10px;
+    }
+
+    .page
+    {
+        height: 100%;
+    }
+
+    .row.no-gutters
+    {
+        margin-right: 0;
+        margin-left: 0;
+
+        & > [class^="col-"],
+        & > [class*=" col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
 
 
