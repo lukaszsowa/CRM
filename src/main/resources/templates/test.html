@@ -3,179 +3,82 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bootstrap 4 Column Wrapping</title>
-    <link rel="stylesheet" href="/main.css"/>
-    <script type="text/javascript" src="/script.js"></script>
+    <title>Index</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/main.css"/>
+    <script type="text/javascript" src="/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <style>
-
-    .userInfo{
-        background-color: #4A5364;
-        height: 50px;
-        height: auto;
-        text-align: left;
-    }
-    .logo{
-        background-color: #4A5364;
-        height: 50px;
-        text-align: center;
-    }
-    .logoutBtn{
-        background-color: #4A5364;
-        height: 50px;
-        text-align: right;
-    }
-    .logoNav
-    {
-        height: 46px;
-    }
-    .menuNav
-    {
-        background-color: #4A5364;
-    }
-    .content
-    {
-
-    }
-    .menuTest
-    {
-        color: #dbdbdb;
-        font-weight: bold;
-        background-color: #4A5364;
-        padding: 20px;
-    }
-    .userName
-    {
-        padding: 0px 10px 0px 20px;
-        color: #dbdbdb;
-        font-weight: bold;
-        letter-spacing: 1px;
-    }
-
-    .userRole
-    {
-        padding: 0px 0px 0px 20px;
-        color: #dbdbdb;
-        font-weight: bold;
-        letter-spacing: 1px;
-    }
-    .breadcrumbRight
-    {
-        background-color: #cccccc;
-        padding: 10px !important;
-        text-align: left;
-        letter-spacing: 3pt;
-    }
-    .breadcrumbLeft
-    {
-        background-color: #cccccc;
-        padding: 10px !important;
-        text-align: right;
-        letter-spacing: 3pt;
-    }
-    .databaseInfo
-    {
-        height: 50px;
-        margin-top: 20px;
-    }
-    .infoBlock
-    {
-        height: auto;
-        text-align: center;
-        background-color: #cccccc;
-        width: 80%;
-        padding: 10px !important;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 10px
-    }
-    .recordsCount
-    {
-        font-size: 40px;
-    }
-    .recordsCountLbl
-    {
-        font-size: 10px;
-    }
-
-    .page
-    {
-        height: 100%;
-    }
-
-    .row.no-gutters {
-      margin-right: 0;
-      margin-left: 0;
-
-      & > [class^="col-"],
-      & > [class*=" col-"] {
-        padding-right: 0;
-        padding-left: 0;
-      }
-
-
-}
-
-</style>
+    <script src="https://kit.fontawesome.com/e05edf3ce6.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="row no-gutters userInfo">
-    <div class="col-sm-2 col-3 test1">
+<div class="row no-gutters bar">
+    <div class="col-sm-2 col-3 userInfo">
         <div class="userName" th:text="${fullName}"></div>
         <div class="userRole" th:text="${role}"></div>
     </div>
     <div class="col-sm-8 col-6 logo">
         <img class="logoNav" src="crm.png"/>
     </div>
-    <div class="col-sm-2 col-3 logoutBtn">
+    <div class="col-sm-2 col-3 logout">
         <a sec:authorize="isAuthenticated()" href="/logout">
-            <button type="button">LOGOUT</button>
+            <i class="fas fa-sign-out-alt logoutBtn"></i>
         </a>
     </div>
 </div>
 <div class="row no-gutters page">
     <div class="col-md-2 menuNav">
-        <div class="col-md-12 col-4 menuTest"><a href="/home"> Home </a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/contacts">Contacts</a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/companies">Companies</a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/training">Trainings</a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/users"> Users </a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/test"> Test </a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/home"><i class="fas fa-home navIcon"></i> Home </a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/companies"><i class="fas fa-address-card navIcon"></i> Companies</a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/test"><i class="fas fa-eye-slash navIcon"></i> Test </a></div>
     </div>
+
     <div class="col-md-10 content">
         <div class="row no-gutters breadcrumbAll">
             <div class="col-md-6 col-6 breadcrumbRight" th:text="Home"></div>
             <div class="col-md-6 col-6 breadcrumbLeft" id="clock2">
-                    <script type="text/javascript">
+                <script type="text/javascript">
                         showTime();
                     </script>
             </div>
         </div>
-        <div class="row no-gutters">
-            <div class="col-md-4 col-12 databaseInfo">
-                <div class="col-md-12 infoBlock">
-                    <div class="col-md-12 recordsCount" th:text="${contactsCount}"></div>
-                    <div class="col-md-12 recordsCountLbl"> Contacts count </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-12 databaseInfo">
-                <div class="col-md-12 infoBlock">
-                    <div class="col-md-12 recordsCount" th:text="${companiesCount}"></div>
-                    <div class="col-md-12 recordsCountLbl"> Companies count </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-12 databaseInfo">
-                <div class="col-md-12 infoBlock">
-                    <div class="col-md-12 recordsCount" th:text="${trainingsCount}"></div>
-                    <div class="col-md-12 recordsCountLbl"> Trainings count </div>
-                </div>
-            </div>
+        <div class="row no-gutters recordsOptionsDiv">
+            <a href="/contacts/add"><i class="fas fa-plus-square recordsOptionsBtn"></i></a>
+            <a href="/contacts/export"><i class="fas fa-file-csv recordsOptionsBtn"></i></a>
+            <a href="/contacts/export-excel"><i class="fas fa-file-excel recordsOptionsBtn"></i></a>
+            <a href="/contacts/generate-pdf"><i class="fas fa-file-pdf recordsOptionsBtn"></i></a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <th> First name</th>
+                    <th> Last name</th>
+                    <th> E-mail</th>
+                    <th> Company</th>
+                </thead>
+                <tbody>
+                <tr th:each="contact : ${contacts}">
+                    <td>
+                        <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.firstName}"></a>
+                    </td>
+                    <td>
+                        <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.lastName}"></a>
+                    </td>
+                    <td>
+                        <a class="tableLink" th:href="'mailto:' + ${contact.email}" th:text="${contact.email}"></a>
+                    </td>
+                    <td th:text="${contact.company.companyName}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+
 </div>
 </body>
 </html>

@@ -53,13 +53,6 @@ body
     text-align: center;
 }
 
-#logout
-{
-    width: 20%;
-    float: left;
-    text-align: right;
-}
-
 #left
 {
     clear: both;
@@ -76,15 +69,6 @@ body
     height: 900px;
     float: left;
 
-}
-
-#usersList
-{
-    margin-left: 3%;
-    margin-top: 2%;
-    margin-right: 3%;
-    font-size: larger;
-    width: 94%;
 }
 
 input[type=submit]
@@ -180,19 +164,6 @@ a.tableLink:hover {
 a.tableLink:active {
   text-decoration: underline;
   color: #000000;
-}
-
-table, th, td {
-  border: 1px solid black;
-}
-
-th, td {
-  padding: 10px 20px;
-  text-align: left;
-}
-
-table {
-  border-collapse: collapse;
 }
 
 #backBtn
@@ -579,20 +550,36 @@ table {
     padding-right: 10px;
 }
 
-    .userInfo{
+    .bar{
         background-color: #4A5364;
         height: 50px;
         height: auto;
+    }
+    .userInfo
+    {
+    padding-top: 5px;
     }
     .logo{
         background-color: #4A5364;
         height: 50px;
         text-align: center;
     }
-    .logoutBtn{
+    .recordsOptions
+    {
+
+    }
+    .recordsTable
+    {
+        padding: 0px 20px 20px 20px;
+    }
+    .logout{
         background-color: #4A5364;
         height: 50px;
         text-align: right;
+    }
+    .logoutBtn{
+        font-size: 30px;
+        padding: 10px;
     }
     .logoNav
     {
@@ -648,6 +635,7 @@ table {
     {
         height: 50px;
         margin-top: 20px;
+        margin-bottom: 50px;
     }
     .infoBlock
     {
@@ -673,6 +661,20 @@ table {
     {
         height: 100%;
     }
+    .recordsOptionsDiv
+    {
+        margin: 20px !important;
+    }
+    .recordsOptionsBtn
+    {
+        color: #cccccc;
+        font-size: 30px;
+        padding-right: 25px;
+    }
+    .table-responsive
+    {
+        padding: 0px 20px 20px 20px;
+    }
 
     .row.no-gutters
     {
@@ -684,6 +686,8 @@ table {
         padding-right: 0;
         padding-left: 0;
     }
+
+
 
 
 
