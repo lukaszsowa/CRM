@@ -48,31 +48,34 @@
             </div>
         </div>
         <div class="row no-gutters recordsOptionsDiv">
-            <a href="/contacts/add"><i class="fas fa-plus-square recordsOptionsBtn"></i></a>
-            <a href="/contacts/export"><i class="fas fa-file-csv recordsOptionsBtn"></i></a>
-            <a href="/contacts/export-excel"><i class="fas fa-file-excel recordsOptionsBtn"></i></a>
-            <a href="/contacts/generate-pdf"><i class="fas fa-file-pdf recordsOptionsBtn"></i></a>
+            <a href="/companies/add"><i class="fas fa-plus-square recordsOptionsBtn"></i></a>
+            <a href="/companies/export"><i class="fas fa-file-csv recordsOptionsBtn"></i></a>
+            <a href="/companies/export-excel"><i class="fas fa-file-excel recordsOptionsBtn"></i></a>
+            <a href="/companies/generate-pdf"><i class="fas fa-file-pdf recordsOptionsBtn"></i></a>
         </div>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
-                    <th> First name</th>
-                    <th> Last name</th>
-                    <th> E-mail</th>
-                    <th> Company</th>
+                    <th> Company name</th>
+                    <th> NIP</th>
+                    <th> Segment</th>
+                    <th> City</th>
                 </thead>
                 <tbody>
-                <tr th:each="contact : ${contacts}">
+                <tr th:each="company : ${companiesList}">
                     <td>
-                        <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.firstName}"></a>
+                        <a class="tableLink" th:href="'/companies/' + ${company.id}" th:text="${company.companyName}"></a>
                     </td>
                     <td>
-                        <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.lastName}"></a>
+                        <a class="tableLink" th:href="'/companies/' + ${company.id}" th:text="${company.nip}"></a>
                     </td>
                     <td>
-                        <a class="tableLink" th:href="'mailto:' + ${contact.email}" th:text="${contact.email}"></a>
+                        <a class="tableLink" th:href="'/companies/' + ${company.id}" th:text="${company.segment}"></a>
                     </td>
-                    <td th:text="${contact.company.companyName}"></td>
+                    <td>
+                        <a class="tableLink" th:href="'/companies/' + ${company.id}" th:text="${company.city}"></a>
+                    </td>
+
                 </tr>
                 </tbody>
             </table>
