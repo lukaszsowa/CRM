@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.service.CompanyService;
 import pl.lukaszsowa.CRM.service.ContactService;
 import pl.lukaszsowa.CRM.service.TrainingService;
@@ -49,8 +50,9 @@ public class IndexController {
 
     @GetMapping("/test")
     String getTest(Model model){
+        model.addAttribute("contact", new Contact());
+        model.addAttribute("companiesList", companyService.getCompanies());
         getLoggedUserInfo(model);
-        model.addAttribute("contacts", contactService.getContacts());
         return "test";
     }
 

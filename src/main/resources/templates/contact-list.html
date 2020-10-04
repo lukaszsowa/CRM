@@ -31,7 +31,7 @@
 <div class="row no-gutters page">
     <div class="col-md-2 menuNav">
         <div class="col-md-12 col-4 menuTest"><a href="/home"><i class="fas fa-home navIcon"></i> Home </a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
+        <div class="col-md-12 col-4 menuTest checked"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/companies"><i class="fas fa-address-card navIcon"></i> Companies</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
@@ -64,15 +64,17 @@
                 <tbody>
                 <tr th:each="contact : ${contacts}">
                     <td>
-                        <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.firstName}"></a>
+                        <a class="tableLink" th:text="${contact.firstName}" th:href="'/contacts/' + ${contact.id}"></a>
                     </td>
                     <td>
-                        <a class="tableLink" th:href="'/contacts/' + ${contact.id}" th:text="${contact.lastName}"></a>
+                        <a class="tableLink" th:text="${contact.lastName}" th:href="'/contacts/' + ${contact.id}"></a>
                     </td>
                     <td>
-                        <a class="tableLink" th:href="'mailto:' + ${contact.email}" th:text="${contact.email}"></a>
+                        <a class="tableLink" th:text="${contact.email}" th:href="'/contacts/' + ${contact.id}"></a>
                     </td>
-                    <td th:text="${contact.company.companyName}"></td>
+                    <td>
+                        <a class="tableLink" th:text="${contact.email}" th:href="'/contacts/' + ${contact.id}"></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

@@ -71,18 +71,6 @@ body
 
 }
 
-input[type=submit]
-{
-    width: 150px;
-    padding: 11px;
-    margin: 15px;
-    border-radius: 10px;
-    border: 1px solid green;
-    background-color: green;
-    font-size: 15px;
-    color: white;
-}
-
 #loginBtn
 {
     width: 150px;
@@ -418,9 +406,9 @@ a.tableLink:active {
 .addError
 {
     border: 1px solid red;
-    width: 187px;
-    height: 25px;
-    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+
 }
 
 .addSelect
@@ -545,9 +533,68 @@ a.tableLink:active {
     width: 120px;
 }
 
+.checked
+{
+background-color: #3a404a !important;
+}
+
 .navIcon
 {
     padding-right: 10px;
+}
+
+.addingBlock
+{
+    margin: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+.addingHeader
+{
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin: -1px;
+    background-color: #e0e0e0;
+}
+
+.addingLabelBlock
+{
+    padding: 30px !important;
+    text-align: right;
+}
+
+.addingInputBlock
+{
+    padding: 25px !important;
+}
+
+.addingInput
+{
+    width: 100%;
+    padding: 5px;
+
+}
+
+.addingLabelBlockSmall
+{
+    text-align: left;
+    padding-left: 25px !important;
+}
+
+.addingLabelBlockSmallFirst
+{
+    padding-left: 25px !important;
+    margin-top: 25px;
+}
+
+.saveButton
+{
+    background-color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    padding: 5px 25px 5px 25px;
 }
 
     .bar{
@@ -686,6 +733,11 @@ a.tableLink:active {
         padding-right: 0;
         padding-left: 0;
     }
+
+
+
+
+
 
 
 

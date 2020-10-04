@@ -13,75 +13,86 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/e05edf3ce6.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<div class="row no-gutters bar">
-    <div class="col-sm-2 col-3 userInfo">
-        <div class="userName" th:text="${fullName}"></div>
-        <div class="userRole" th:text="${role}"></div>
-    </div>
-    <div class="col-sm-8 col-6 logo">
-        <img class="logoNav" src="crm.png"/>
-    </div>
-    <div class="col-sm-2 col-3 logout">
-        <a sec:authorize="isAuthenticated()" href="/logout">
-            <i class="fas fa-sign-out-alt logoutBtn"></i>
-        </a>
-    </div>
-</div>
-<div class="row no-gutters page">
-    <div class="col-md-2 menuNav">
-        <div class="col-md-12 col-4 menuTest"><a href="/home"><i class="fas fa-home navIcon"></i> Home </a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/companies"><i class="fas fa-address-card navIcon"></i> Companies</a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/test"><i class="fas fa-eye-slash navIcon"></i> Test </a></div>
-    </div>
-
-    <div class="col-md-10 content">
-        <div class="row no-gutters breadcrumbAll">
-            <div class="col-md-6 col-6 breadcrumbRight" th:text="Home"></div>
-            <div class="col-md-6 col-6 breadcrumbLeft" id="clock2">
-                <script type="text/javascript">
-                        showTime();
-                    </script>
+    <body>
+        <div class="row no-gutters bar">
+            <div class="col-sm-2 col-3 userInfo">
+                <div class="userName" th:text="${fullName}"></div>
+                <div class="userRole" th:text="${role}"></div>
+            </div>
+            <div class="col-sm-8 col-6 logo">
+                <img class="logoNav" src="crm.png"/>
+            </div>
+            <div class="col-sm-2 col-3 logout">
+                <a sec:authorize="isAuthenticated()" href="/logout">
+                    <i class="fas fa-sign-out-alt logoutBtn"></i>
+                </a>
             </div>
         </div>
-        <div class="row no-gutters recordsOptionsDiv">
-            <a href="/companies/add"><i class="fas fa-plus-square recordsOptionsBtn"></i></a>
-            <a href="/companies/export"><i class="fas fa-file-csv recordsOptionsBtn"></i></a>
-            <a href="/companies/export-excel"><i class="fas fa-file-excel recordsOptionsBtn"></i></a>
-            <a href="/companies/generate-pdf"><i class="fas fa-file-pdf recordsOptionsBtn"></i></a>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <th> Company name</th>
-                    <th> NIP</th>
-                    <th> Segment</th>
-                    <th> City</th>
-                </thead>
-                <tbody>
-                <tr th:each="company : ${companiesList}">
-                    <td>
-                        <a class="tableLink" th:href="'/companies/' + ${company.id}" th:text="${company.companyName}"></a>
-                    </td>
-                    <td>
-                        <a class="tableLink" th:href="'/companies/' + ${company.id}" th:text="${company.nip}"></a>
-                    </td>
-                    <td>
-                        <a class="tableLink" th:href="'/companies/' + ${company.id}" th:text="${company.segment}"></a>
-                    </td>
-                    <td>
-                        <a class="tableLink" th:href="'/companies/' + ${company.id}" th:text="${company.city}"></a>
-                    </td>
+        <div class="row no-gutters page">
+            <div class="col-md-2 d-none d-md-block menuNav">
+                <div class="col-md-12 col-4 menuTest"><a href="/home"><i class="fas fa-home navIcon"></i> Home </a></div>
+                <div class="col-md-12 col-4 menuTest"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
+                <div class="col-md-12 col-4 menuTest"><a href="/companies"><i class="fas fa-address-card navIcon"></i> Companies</a></div>
+                <div class="col-md-12 col-4 menuTest checked"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
+                <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
+                <div class="col-md-12 col-4 menuTest"><a href="/test"><i class="fas fa-eye-slash navIcon"></i> Test </a></div>
+            </div>
 
-                </tr>
-                </tbody>
-            </table>
+            <div class="col-md-10 content">
+                <div class="row no-gutters breadcrumbAll">
+                    <div class="col-md-6 col-6 breadcrumbRight" th:text="Home"></div>
+                    <div class="col-md-6 col-6 breadcrumbLeft" id="clock2">
+                        <script type="text/javascript">
+                                showTime();
+                            </script>
+                    </div>
+                </div>
+                <div class="addingBlock">
+                    <div class="addingHeader"> Basic information </div>
+                    <div class="row no-gutters">
+                        <div class="col-md-3 d-none d-md-block addingLabelBlock"> First name </div>
+                        <div class="col-md-3 d-block d-sm-none addingLabelBlockSmallFirst"> First name </div>
+                        <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')}? addError : addingInput"></div>
+                        <div class="col-md-3 d-none d-md-block addingLabelBlock"> Last name </div>
+                        <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Last name </div>
+                        <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')}? addError : addingInput"></div>
+                        <input type="hidden" th:field="*{id}">
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-md-3 d-none d-md-block addingLabelBlock"> Job title </div>
+                        <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Job title </div>
+                        <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{jobTitle}" th:class="${#fields.hasErrors('jobTitle')}? addError : addingInput"></div>
+                        <div class="col-md-3 d-none d-md-block addingLabelBlock"> Company </div>
+                        <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Company </div>
+                        <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{company}" th:class="${#fields.hasErrors('company')}? addError : addingInput"></div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-md-3 d-none d-md-block addingLabelBlock"> Lead source </div>
+                        <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Lead source </div>
+                        <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{leadSource}" th:class="${#fields.hasErrors('leadSource')}? addError : addingInput"></div>
+                        <div class="col-md-3 d-none d-md-block addingLabelBlock"> Status </div>
+                        <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Status </div>
+                        <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{status}" th:class="${#fields.hasErrors('status')}? addError : addingInput"></div>
+                    </div>
+                </div>
+                <div class="addingBlock">
+                    <div class="addingHeader"> Contact information </div>
+                    <div class="row no-gutters">
+                        <div class="col-md-3 d-none d-md-block addingLabelBlock"> Phone </div>
+                        <div class="col-md-3 d-block d-sm-none addingLabelBlockSmallFirst"> Phone </div>
+                        <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{phone}" th:class="${#fields.hasErrors('phone')}? addError : addingInput"></div>
+                        <div class="col-md-3 d-none d-md-block addingLabelBlock"> E-mail </div>
+                        <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> E-mail </div>
+                        <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{email}" th:class="${#fields.hasErrors('email')}? addError : addingInput"></div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-md-3 col-6 addingLabelBlock"> Permission to call </div>
+                        <div class="col-md-3 col-6 addingInputBlock"><input type="checkbox" class="addingInput"></div>
+                        <div class="col-md-3 col-6 addingLabelBlock"> Permission to send e-mail </div>
+                        <div class="col-md-3 col-6 addingInputBlock"><input type="checkbox" class="addingInput"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
-</div>
-</body>
+    </body>
 </html>
