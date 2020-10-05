@@ -20,7 +20,7 @@
         <div class="userRole" th:text="${role}"></div>
     </div>
     <div class="col-sm-8 col-6 logo">
-        <img class="logoNav" src="crm.png"/>
+        <img class="logoNav" src="/crm.png"/>
     </div>
     <div class="col-sm-2 col-3 logout">
         <a sec:authorize="isAuthenticated()" href="/logout">
@@ -40,7 +40,7 @@
 
     <div class="col-md-10 content">
         <div class="row no-gutters breadcrumbAll">
-            <div class="col-md-6 col-6 breadcrumbRight" th:text="Home"></div>
+            <div class="col-md-6 col-6 breadcrumbRight"> Home / Contacts / Add </div>
             <div class="col-md-6 col-6 breadcrumbLeft" id="clock2">
                 <script type="text/javascript">
                                 showTime();
