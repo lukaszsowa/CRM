@@ -597,6 +597,11 @@ background-color: #3a404a !important;
     padding: 5px 25px 5px 25px;
 }
 
+.choiceTable
+{
+    margin-top: 20px;
+}
+
     .bar{
         background-color: #4A5364;
         height: 50px;
