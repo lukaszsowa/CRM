@@ -12,42 +12,58 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/e05edf3ce6.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 </head>
-    <body>
-        <div class="row no-gutters bar">
-            <div class="col-sm-2 col-3 userInfo">
-                <div class="userName" th:text="${fullName}"></div>
-                <div class="userRole" th:text="${role}"></div>
-            </div>
-            <div class="col-sm-8 col-6 logo">
-                <img class="logoNav" src="crm.png"/>
-            </div>
-            <div class="col-sm-2 col-3 logout">
-                <a sec:authorize="isAuthenticated()" href="/logout">
-                    <i class="fas fa-sign-out-alt logoutBtn"></i>
-                </a>
-            </div>
-        </div>
-        <div class="row no-gutters page">
-            <div class="col-md-2 d-none d-md-block menuNav">
-                <div class="col-md-12 col-4 menuTest"><a href="/home"><i class="fas fa-home navIcon"></i> Home </a></div>
-                <div class="col-md-12 col-4 menuTest"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
-                <div class="col-md-12 col-4 menuTest"><a href="/companies"><i class="fas fa-address-card navIcon"></i> Companies</a></div>
-                <div class="col-md-12 col-4 menuTest"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
-                <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
-                <div class="col-md-12 col-4 menuTest checked"><a href="/test"><i class="fas fa-eye-slash navIcon"></i> Test </a></div>
-            </div>
+<body>
+<div class="row no-gutters bar">
+    <div class="col-sm-2 col-3 userInfo">
+        <div class="userName" th:text="${fullName}"></div>
+        <div class="userRole" th:text="${role}"></div>
+    </div>
+    <div class="col-sm-8 col-6 logo">
+        <img class="logoNav" src="/crm.png"/>
+    </div>
+    <div class="col-sm-2 col-3 logout">
+        <a sec:authorize="isAuthenticated()" href="/logout">
+            <i class="fas fa-sign-out-alt logoutBtn"></i>
+        </a>
+    </div>
+</div>
+<div class="row no-gutters page">
+    <div class="col-md-2 d-none d-md-block menuNav">
+        <div class="col-md-12 col-4 menuTest"><a href="/home"><i class="fas fa-home navIcon"></i> Home </a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/companies"><i class="fas fa-address-card navIcon"></i> Companies</a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
+        <div class="col-md-12 col-4 menuTest checked"><a href="/test"><i class="fas fa-eye-slash navIcon"></i> Test </a></div>
+    </div>
 
-            <div class="col-md-10 content">
-                <div class="row no-gutters breadcrumbAll">
-                    <div class="col-md-6 col-6 breadcrumbRight" th:text="Home"></div>
-                    <div class="col-md-6 col-6 breadcrumbLeft" id="clock2">
-                        <script type="text/javascript">
-                                showTime();
-                            </script>
-                    </div>
-                </div>
+    <div class="col-md-10 content">
+        <div class="row no-gutters breadcrumbAll">
+            <div class="col-md-6 col-6 breadcrumbRight"> Home / Contacts / Add </div>
+            <div class="col-md-6 col-6 breadcrumbLeft" id="clock2">
+                <script type="text/javascript">
+                    showTime();
+                </script>
             </div>
         </div>
-    </body>
+            <div class="addingBlock">
+                <div class="addingHeader"> Basic information </div>
+                <div id="map" style="height: 600px; width: 100%;"></div>
+                <script>
+                    mapboxgl.accessToken = 'pk.eyJ1IjoibHVrYXN6c293YSIsImEiOiJja2Z5ZDRhZ2YyeHNuMnJwYTh5YnQ5dnVqIn0.HI5Ee0EKXDRxEbFx3DETEA';
+                    var map = new mapboxgl.Map({
+                    container: 'map', // container id
+                    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                    center: [21, 52.20], // starting position [lng, lat]
+                    zoom: 9 // starting zoom
+                    });
+                </script>
+            </div>
+    </div>
+</div>
+</body>
 </html>
