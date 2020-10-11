@@ -174,9 +174,9 @@
 <div class="row no-gutters page">
     <div class="col-md-2 d-none d-md-block menuNav">
         <div class="col-md-12 col-4 menuTest"><a href="/home"><i class="fas fa-home navIcon"></i> Home </a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
+        <div class="col-md-12 col-4 menuTest checked"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/companies"><i class="fas fa-address-card navIcon"></i> Companies</a></div>
-        <div class="col-md-12 col-4 menuTest checked"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/test"><i class="fas fa-eye-slash navIcon"></i> Test </a></div>
     </div>
@@ -201,21 +201,21 @@
                 <div class="row no-gutters">
                     <div class="col-md-3 d-none d-md-block addingLabelBlock"> First name </div>
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmallFirst"> First name </div>
-                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')}? addError : addingInput"></div>
+                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')}? addError : addingInput" readonly></div>
                     <div class="col-md-3 d-none d-md-block addingLabelBlock"> Last name </div>
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Last name </div>
-                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')}? addError : addingInput"></div>
+                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')}? addError : addingInput" readonly></div>
                     <input type="hidden" th:field="*{id}">
                 </div>
                 <div class="row no-gutters">
                     <div class="col-md-3 d-none d-md-block addingLabelBlock"> Job title </div>
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Job title </div>
-                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{jobTitle}" th:class="${#fields.hasErrors('jobTitle')}? addError : addingInput"></div>
+                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{jobTitle}" th:class="${#fields.hasErrors('jobTitle')}? addError : addingInput" readonly></div>
                     <div class="col-md-3 d-none d-md-block addingLabelBlock"> Company </div>
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Company </div>
                     <div class="col-md-3 col-12 addingInputBlock">
                         <a href="javascript:void(0);" onClick="myPopup('contact-company-choice', 'Companies', 1200, 450);">
-                            <input class="addingInput" id="companyChoice"/>
+                            <input class="addingInput" id="companyChoice" readonly/>
                         </a>
                     </div>
 
@@ -223,10 +223,10 @@
                 <div class="row no-gutters">
                     <div class="col-md-3 d-none d-md-block addingLabelBlock"> Lead source </div>
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Lead source </div>
-                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{leadSource}" th:class="${#fields.hasErrors('leadSource')}? addError : addingInput"></div>
+                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{leadSource}" th:class="${#fields.hasErrors('leadSource')}? addError : addingInput" readonly></div>
                     <div class="col-md-3 d-none d-md-block addingLabelBlock"> Status </div>
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Status </div>
-                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{status}" th:class="${#fields.hasErrors('status')}? addError : addingInput"></div>
+                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{status}" th:class="${#fields.hasErrors('status')}? addError : addingInput" readonly></div>
                 </div>
             </div>
             <div class="addingBlock">
@@ -234,16 +234,16 @@
                 <div class="row no-gutters">
                     <div class="col-md-3 d-none d-md-block addingLabelBlock"> Phone </div>
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmallFirst"> Phone </div>
-                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{phone}" th:class="${#fields.hasErrors('phone')}? addError : addingInput"></div>
+                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{phone}" th:class="${#fields.hasErrors('phone')}? addError : addingInput" readonly></div>
                     <div class="col-md-3 d-none d-md-block addingLabelBlock"> E-mail </div>
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> E-mail </div>
-                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{email}" th:class="${#fields.hasErrors('email')}? addError : addingInput"></div>
+                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{email}" th:class="${#fields.hasErrors('email')}? addError : addingInput" readonly></div>
                 </div>
                 <div class="row no-gutters">
                     <div class="col-md-3 col-6 addingLabelBlock"> Permission to call </div>
-                    <div class="col-md-3 col-6 addingInputBlock"><input type="checkbox" class="addingInput"></div>
+                    <div class="col-md-3 col-6 addingInputBlock"><input type="checkbox" class="addingInput" onclick="return false;"></div>
                     <div class="col-md-3 col-6 addingLabelBlock"> Permission to send e-mail </div>
-                    <div class="col-md-3 col-6 addingInputBlock"><input type="checkbox" class="addingInput"></div>
+                    <div class="col-md-3 col-6 addingInputBlock"><input type="checkbox" class="addingInput" onclick="return false;"></div>
                 </div>
             </div>
         </form>
