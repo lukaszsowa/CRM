@@ -213,11 +213,8 @@
                     <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{jobTitle}" th:class="${#fields.hasErrors('jobTitle')}? addError : addingInput" readonly></div>
                     <div class="col-md-3 d-none d-md-block addingLabelBlock"> Company </div>
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Company </div>
-                    <div class="col-md-3 col-12 addingInputBlock">
-                        <a href="javascript:void(0);" onClick="myPopup('contact-company-choice', 'Companies', 1200, 450);">
-                            <input class="addingInput" id="companyChoice" readonly/>
-                        </a>
-                    </div>
+                    <div class="col-md-3 col-12 addingInputBlock"><input type="text" th:field="*{company.companyName}" th:class="${#fields.hasErrors('company.companyName')}? addError : addingInput" readonly></div>
+
 
                 </div>
                 <div class="row no-gutters">

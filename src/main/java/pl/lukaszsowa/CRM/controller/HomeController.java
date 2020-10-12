@@ -49,17 +49,13 @@ public class HomeController {
         model.addAttribute("contactsCount", contactService.getContactsCount());
         model.addAttribute("companiesCount", companyService.getCompanyCount());
         model.addAttribute("trainingsCount", trainingService.getTrainingsCount());
-        return "index";
-    }
-
-    @GetMapping("/home/charts")
-    public String getPieChart(Model model) {
         Map<String, Integer> graphData = new TreeMap<>();
         graphData.put("2016", 147);
         graphData.put("2017", 1256);
         graphData.put("2018", 3856);
         graphData.put("2019", 19807);
         model.addAttribute("chartData", graphData);
-        return "home-charts";
+        return "index";
     }
+
 }

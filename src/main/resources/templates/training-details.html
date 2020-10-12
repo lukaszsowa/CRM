@@ -306,8 +306,9 @@
 
         <form th:action="@{/save-training}" method="post" th:object="${training}">
             <div class="row no-gutters recordsOptionsDiv">
-                <a th:href="'/trainings/edit/' + ${training.id}"><i class="fas fa-edit recordsOptionsBtn"></i></a>
-                <a th:href="'/trainings/delete/' + ${training.id}"><i class="fas fa-trash-alt recordsOptionsBtn" onclick="return confirm('Are you sure you want to Remove?');"></i></a>
+                <a th:href="'/training/edit/' + ${training.id}"><i class="fas fa-edit recordsOptionsBtn"></i></a>
+                <a th:href="'/training/delete/' + ${training.id}"><i class="fas fa-trash-alt recordsOptionsBtn" onclick="return confirm('Are you sure you want to Remove?');"></i></a>
+                <a th:href="'/training/' + ${training.id} + '/participants'"><i class="fas fa-user recordsOptionsBtn"></i></a>
             </div>
             <div class="addingBlock">
                 <div class="addingHeader"> Basic information </div>
