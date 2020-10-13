@@ -26,11 +26,7 @@ function myPopup(myURL, title, myWidth, myHeight) {
 
 function post_value(id){
     opener.document.getElementById("companyChoice").value = document.getElementById("companyId" + id).innerHTML;
-    self.close();
-    }
-
-function post_company(companyName){
-    opener.document.getElementById("companyNameChoice").value = document.getElementById(companyName).innerHTML;
+    opener.document.getElementById("companyNameChoice").value = document.getElementById("companyName").innerText;
     self.close();
     }
 

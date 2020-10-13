@@ -71,7 +71,8 @@
                     <div class="col-md-3 d-block d-sm-none addingLabelBlockSmall"> Company </div>
                     <div class="col-md-3 col-12 addingInputBlock">
                         <a href="javascript:void(0);" onClick="myPopup('contact-company-choice', 'Companies', 1200, 450);">
-                            <input th:field="*{company.id}" class="addingInput" id="companyChoice"/>
+                            <input class="addingInput" id="companyNameChoice"/>
+                            <input th:field="*{company.id}" class="addingInput" id="companyChoice" hidden/>
                         </a>
                     </div>
 
