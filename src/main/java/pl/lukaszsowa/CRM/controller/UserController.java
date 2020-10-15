@@ -90,6 +90,6 @@ public class UserController {
         Optional<User> optionalUser = userService.getUserById(id);
         User user = optionalUser.get();
         model.addAttribute("user", user);
-        return "user-details";
+        return "users-details";
     }
 }

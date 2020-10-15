@@ -43,15 +43,8 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/errorLogin")
-    String getErrorLogin(){
-        return "error-login";
-    }
-
     @GetMapping("/test")
     String getTest(Model model){
-        model.addAttribute("contact", new Contact());
-        model.addAttribute("companiesList", companyService.getCompanies());
         getLoggedUserInfo(model);
         return "test";
     }
@@ -63,6 +56,12 @@ public class IndexController {
         String role = userService.getUser(login).getRole().getRole().toUpperCase();
         model.addAttribute("fullName", fullName);
         model.addAttribute("role", role);
+    }
+
+    @GetMapping("/settings")
+    String getSettings(Model model){
+        getLoggedUserInfo(model);
+        return "settings";
     }
 }
 

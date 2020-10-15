@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 @Controller
-public class HomeController {
+public class LoginController {
 
     @Autowired
     UserService userService;
@@ -35,27 +35,12 @@ public class HomeController {
 
     @GetMapping("/")
     public String loginPage(){
-        return "home";
+        return "login";
     }
 
-    @GetMapping("/home")
-    public String getIndex(Model model){
-        Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
-        String login = loggedUser.getName();
-        String fullName = userService.getUser(login).getFirstName() + " " + userService.getUser(login).getLastName();
-        String role = userService.getUser(login).getRole().getRole().toUpperCase();
-        model.addAttribute("fullName", fullName);
-        model.addAttribute("role", role);
-        model.addAttribute("contactsCount", contactService.getContactsCount());
-        model.addAttribute("companiesCount", companyService.getCompanyCount());
-        model.addAttribute("trainingsCount", trainingService.getTrainingsCount());
-        Map<String, Integer> graphData = new TreeMap<>();
-        graphData.put("2016", 147);
-        graphData.put("2017", 1256);
-        graphData.put("2018", 3856);
-        graphData.put("2019", 19807);
-        model.addAttribute("chartData", graphData);
-        return "index";
+    @GetMapping("/errorLogin")
+    String getErrorLogin(){
+        return "login-error";
     }
 
 }

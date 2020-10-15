@@ -33,53 +33,11 @@
         <div class="col-md-12 col-4 menuTest"><a href="/index"><i class="fas fa-home navIcon"></i> Home </a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/companies"><i class="fas fa-address-card navIcon"></i> Companies</a></div>
-        <div class="col-md-12 col-4 menuTest checked"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/test"><i class="fas fa-eye-slash navIcon"></i> Test </a></div>
+        <div class="col-md-12 col-4 menuTest checked"><a href="/test"><i class="fas fa-cogs navIcon"></i> Settings </a></div>
     </div>
-
-    <div class="col-md-10 content">
-        <div class="row no-gutters breadcrumbAll">
-            <div class="col-md-6 col-6 breadcrumbRight" th:text="Home"></div>
-            <div class="col-md-6 col-6 breadcrumbLeft" id="clock2">
-                <script type="text/javascript">
-                        showTime();
-                    </script>
-            </div>
-        </div>
-        <div class="row no-gutters recordsOptionsDiv">
-            <a href="/training/add"><i class="fas fa-plus-square recordsOptionsBtn"></i></a>
-            <a href="/training/export"><i class="fas fa-file-csv recordsOptionsBtn"></i></a>
-            <a href="/training/export-excel"><i class="fas fa-file-excel recordsOptionsBtn"></i></a>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                <th> Date start </th>
-                <th> Date end </th>
-                <th> Capacity </th>
-                <th> Localization</th>
-                </thead>
-                <tbody>
-                <tr th:each="training : ${trainingsList}">
-                    <td>
-                        <a class="tableLink" th:href="'/training/' + ${training.id}" th:text="${training.dateStart}"></a>
-                    </td>
-                    <td>
-                        <a class="tableLink" th:href="'/training/' + ${training.id}" th:text="${training.dateEnd}"></a>
-                    </td>
-                    <td>
-                        <a class="tableLink" th:href="'/training/' + ${training.id}" th:text="${training.capacity}"></a>
-                    </td>
-                    <td>
-                        <a class="tableLink" th:href="'/training/' + ${training.id}" th:text="${training.localization}"></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
 </div>
 </body>
 </html>

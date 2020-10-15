@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Index</title>
+    <link rel="stylesheet" href="/main.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body id="loginPage">
+    <div>
+        <div>
+            <img id="logoLoginPage" src="crm.png"/>
+        </div>
+        <form action="loginform" th:action="@{/}" method="post" ><br>
+            <input class="loginInput" type="text" th:name="login" placeholder="Username"/><br>
+            <input class="loginInput" type="password" th:name="password" placeholder="Password"/><br>
+            <input id="loginBtn" type="submit" value="Login"/>
+        </form>
+    </div>
+</body>
+</html>
