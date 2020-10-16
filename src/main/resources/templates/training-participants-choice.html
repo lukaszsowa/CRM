@@ -1,38 +1,83 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Contact choice</title>-->
+<!--    <link rel="stylesheet" href="/main.css"/>-->
+<!--    <script type="text/javascript" src="/script.js"></script>-->
+
+<!--</head>-->
+<!--<body>-->
+
+<!--<table id="usersList">-->
+<!--    <thead>-->
+<!--    <th> ID </th>-->
+<!--    <th> First name</th>-->
+<!--    <th> Last name</th>-->
+<!--    <th> Company</th>-->
+<!--    <th> E-mail</th>-->
+<!--    <th> Job title</th>-->
+<!--    <th></th>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="contact : ${contactList}">-->
+<!--        <td id="id" th:text="${contact.id}"></td>-->
+<!--        <td id="firstName" th:text="${contact.firstName}"></td>-->
+<!--        <td id="lastName" th:text="${contact.lastName}"></td>-->
+<!--        <td id="company" th:text="${contact.company.companyName}"></td>-->
+<!--        <td id="email" th:text="${contact.email}"></td>-->
+<!--        <td id="jobTitle" th:text="${contact.jobTitle}"></td>-->
+<!--        <td>-->
+<!--            <a th:href="'/training/' + ${training.id} + '/participant/' + ${contact.id}" onclick="window.close()"><button>Set</button></a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact choice</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/main.css"/>
     <script type="text/javascript" src="/script.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/e05edf3ce6.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<table id="usersList">
-    <thead>
-    <th> ID </th>
-    <th> First name</th>
-    <th> Last name</th>
-    <th> Company</th>
-    <th> E-mail</th>
-    <th> Job title</th>
-    <th></th>
-    </thead>
-    <tbody>
-    <tr th:each="contact : ${contactList}">
-        <td id="id" th:text="${contact.id}"></td>
-        <td id="firstName" th:text="${contact.firstName}"></td>
-        <td id="lastName" th:text="${contact.lastName}"></td>
-        <td id="company" th:text="${contact.company.companyName}"></td>
-        <td id="email" th:text="${contact.email}"></td>
-        <td id="jobTitle" th:text="${contact.jobTitle}"></td>
-        <td>
-            <a th:href="'/training/' + ${training.id} + '/participant/' + ${contact.id}" onclick="window.close()"><button>Set</button></a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
+<div class="table-responsive">
+    <table class="table table-bordered choiceTable">
+        <thead>
+        <th> First name </th>
+        <th> Last name </th>
+        <th> Company </th>
+        <th> E-mail </th>
+        <th> Job title </th>
+        <th></th>
+        </thead>
+        <tbody>
+        <tr th:each="contact : ${contactList}">
+                    <td id="firstName" th:text="${contact.firstName}"></td>
+                    <td id="lastName" th:text="${contact.lastName}"></td>
+                    <td id="company" th:text="${contact.company.companyName}"></td>
+                    <td id="email" th:text="${contact.email}"></td>
+                    <td id="jobTitle" th:text="${contact.jobTitle}"></td>
+            <td>
+                <a th:href="'/training/' + ${training.id} + '/participant/' + ${contact.id}" onclick="window.close()">
+                    <i class="fas fa-check recordsOptionsBtn"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

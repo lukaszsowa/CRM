@@ -176,6 +176,6 @@ public class TrainingController {
         query.setParameter("id", id);
         query.setParameter("id2", id2);
         query.executeUpdate();
-        return "redirect:/training-participants";
+        return "redirect:/training/{id}/participants";
     }
 }
