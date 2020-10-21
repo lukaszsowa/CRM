@@ -3,6 +3,10 @@ package pl.lukaszsowa.CRM.controller;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -143,6 +147,23 @@ public class TrainingController {
         IOUtils.copy(stream, response.getOutputStream());
     }
 
+    @RequestMapping(value = "/training/generate-pdf", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> trainingsPdf() throws IOException {
+
+        List<Training> trainingList = (List<Training>) trainingService.getAllTrainings();
+
+        ByteArrayInputStream bis = GeneratePdfReport.trainingsPdf(trainingList);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=trainings_report.pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
+    }
+
     @RequestMapping(value = "/training/{id}/participants", method = RequestMethod.GET)
     public String getParticipants(@PathVariable("id") long id, Model model){
         getLoggedUserInfo(model);
@@ -178,4 +199,6 @@ public class TrainingController {
         query.executeUpdate();
         return "redirect:/training/{id}/participants";
     }
+
+
 }

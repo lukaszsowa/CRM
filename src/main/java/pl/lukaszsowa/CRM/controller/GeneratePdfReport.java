@@ -6,6 +6,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import pl.lukaszsowa.CRM.model.Company;
 import pl.lukaszsowa.CRM.model.Contact;
+import pl.lukaszsowa.CRM.model.Training;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -119,6 +120,68 @@ public class GeneratePdfReport {
                 table.addCell(cell);
 
                 cell = new PdfPCell(new Phrase(String.valueOf(company.getCity())));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                cell.setPaddingRight(5);
+                table.addCell(cell);
+            }
+
+            PdfWriter.getInstance(document, out);
+            document.open();
+            document.add(table);
+
+            document.close();
+
+        } catch (DocumentException ex) {
+
+            Logger.getLogger(GeneratePdfReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return new ByteArrayInputStream(out.toByteArray());
+    }
+
+    public static ByteArrayInputStream trainingsPdf(List<Training> trainingList) {
+
+        Document document = new Document();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        try {
+
+            PdfPTable table = new PdfPTable(3);
+            table.setWidthPercentage(90);
+            table.setWidths(new int[]{3, 3, 4});
+
+            Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+
+            PdfPCell hcell;
+            hcell = new PdfPCell(new Phrase("Date start", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase("Date end", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase("Localization", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            table.addCell(hcell);
+
+            for (Training training : trainingList) {
+
+                PdfPCell cell;
+
+                cell = new PdfPCell(new Phrase(String.valueOf(training.getDateStart())));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(String.valueOf(training.getDateEnd())));
+                cell.setPaddingLeft(5);
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(String.valueOf(training.getLocalization())));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 cell.setPaddingRight(5);
