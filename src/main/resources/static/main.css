@@ -602,6 +602,26 @@ background-color: #3a404a !important;
     margin-top: 20px;
 }
 
+.ideas
+{
+    height: 300px;
+    border: solid 1px #cccccc;
+    border-radius: 10px;
+    width: 87%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.ideasHeader
+{
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin: -1px;
+    background-color: #e0e0e0;
+}
+
     .bar{
         background-color: #4A5364;
         height: 50px;
