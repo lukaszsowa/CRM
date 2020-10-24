@@ -604,7 +604,7 @@ background-color: #3a404a !important;
 
 .ideas
 {
-    height: 300px;
+    min-height: 356px;
     border: solid 1px #cccccc;
     border-radius: 10px;
     width: 87%;
@@ -620,6 +620,26 @@ background-color: #3a404a !important;
     border-radius: 5px;
     margin: -1px;
     background-color: #e0e0e0;
+}
+
+.ideasTable
+{
+    padding: 0px !important;
+}
+
+.saveIdeaIcon
+{
+    font-size: 18px;
+}
+
+.saveIdeaBtn
+{
+    padding: 5px !important;
+}
+
+.inputIdea
+{
+    width: 85%;
 }
 
     .bar{

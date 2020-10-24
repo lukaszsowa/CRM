@@ -7,12 +7,15 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.lukaszsowa.CRM.model.Contact;
-import pl.lukaszsowa.CRM.service.CompanyService;
-import pl.lukaszsowa.CRM.service.ContactService;
-import pl.lukaszsowa.CRM.service.TrainingService;
-import pl.lukaszsowa.CRM.service.UserService;
+import pl.lukaszsowa.CRM.model.Idea;
+import pl.lukaszsowa.CRM.service.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class IndexController {
@@ -29,17 +32,23 @@ public class IndexController {
     @Autowired
     TrainingService trainingService;
 
+    @Autowired
+    IdeaService ideaService;
+
     @GetMapping("/index")
     String getIndex(Model model){
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
         String login = loggedUser.getName();
         String fullName = userService.getUser(login).getFirstName() + " " + userService.getUser(login).getLastName();
         String role = userService.getUser(login).getRole().getRole().toUpperCase();
+        long userId = userService.getUser(loggedUser.getName()).getId();
+        model.addAttribute("ideaListByUser", ideaService.getIdeasByUserId(userId));
         model.addAttribute("fullName", fullName);
         model.addAttribute("role", role);
         model.addAttribute("contactsCount", contactService.getContactsCount());
         model.addAttribute("companiesCount", companyService.getCompanyCount());
         model.addAttribute("trainingsCount", trainingService.getTrainingsCount());
+        model.addAttribute("idea", new Idea());
         return "index";
     }
 
@@ -62,6 +71,17 @@ public class IndexController {
     String getSettings(Model model){
         getLoggedUserInfo(model);
         return "settings";
+    }
+
+    @PostMapping("/save-idea")
+    public String saveIdea(@Valid @ModelAttribute Idea idea, BindingResult bindingResult, Model model){
+        getLoggedUserInfo(model);
+        model.addAttribute("idea", new Idea());
+        Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
+        String login = loggedUser.getName();
+        idea.setUser(userService.getUser(login));
+        ideaService.addIdea(idea);
+        return "redirect:/index";
     }
 }
 

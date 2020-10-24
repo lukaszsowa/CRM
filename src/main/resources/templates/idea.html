@@ -30,14 +30,14 @@
 </div>
 <div class="row no-gutters page">
     <div class="col-md-2 menuNav">
-        <div class="col-md-12 col-4 menuTest checked"><a href="/index"><i class="fas fa-home navIcon"></i> Home </a></div>
+        <div class="col-md-12 col-4 menuTest"><a href="/index"><i class="fas fa-home navIcon"></i> Home </a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/contacts"><i class="fas fa-address-card navIcon"></i> Contacts</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/companies"><i class="fas fa-address-card navIcon"></i> Companies</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/test"><i class="fas fa-eye-slash navIcon"></i> Test </a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/settings"><i class="fas fa-cogs navIcon"></i> Settings </a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/ideas"><i class="fas fa-cogs idea"></i> Ideas </a></div>
+        <div class="col-md-12 col-4 menuTest checked"><a href="/ideas"><i class="fas fa-cogs idea"></i> Ideas </a></div>
     </div>
 
     <div class="col-md-10 content">
@@ -62,6 +62,29 @@
                 </div>
             </div>
         </form>
+        <div class="row no-gutters">
+            <div class="col-md-6 col-12">
+                <div class="ideas">
+                    <div class="ideasHeader"> My ideas </div>
+                    <div class="table-responsive ideasTable">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr th:each="idea : ${ideaListByUser}">
+                                <td>
+                                    <a class="tableLink" th:text="${idea.description}"></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="ideas">
+                    <div class="ideasHeader"> Ideas v.2 </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

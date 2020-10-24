@@ -40,21 +40,11 @@ public class IdeaController {
     public String getIdeas(Model model){
         getLoggedUserInfo(model);
         model.addAttribute("idea", new Idea());
+        String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        long userId = userService.getUser(loggedUser).getId();
+        model.addAttribute("ideaListByUser", ideaService.getIdeasByUserId(userId));
         return "idea";
     }
 
-    @PostMapping("/save-idea")
-    public String saveIdea(@Valid @ModelAttribute Idea idea, BindingResult bindingResult, Model model){
-        getLoggedUserInfo(model);
-        if(bindingResult.hasErrors()){
-            return "ideas";
-        } else {
-            model.addAttribute("idea", new Idea());
-            Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
-            String login = loggedUser.getName();
-            idea.setUser(userService.getUser(login));
-            ideaService.addIdea(idea);
-        }
-        return "index";
-    }
+
 }
