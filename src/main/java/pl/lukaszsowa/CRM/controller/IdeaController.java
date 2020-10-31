@@ -36,6 +36,18 @@ public class IdeaController {
         model.addAttribute("role", role);
     }
 
+    @PostMapping("/save-idea")
+    public String saveIdea(@Valid @ModelAttribute Idea idea, BindingResult bindingResult, Model model){
+        getLoggedUserInfo(model);
+        model.addAttribute("idea", new Idea());
+        Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
+        String login = loggedUser.getName();
+        idea.setUser(userService.getUser(login));
+        idea.setStatus("To do!");
+        ideaService.addIdea(idea);
+        return "redirect:/index";
+    }
+
     @GetMapping("/ideas")
     public String getIdeas(Model model){
         getLoggedUserInfo(model);

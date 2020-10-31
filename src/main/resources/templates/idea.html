@@ -49,41 +49,25 @@
                     </script>
             </div>
         </div>
-        <form th:action="@{/save-idea}" method="post" th:object="${idea}">
-            <div class="row no-gutters recordsOptionsDiv">
-                <input class="saveButton" value="Save" type="submit">
-            </div>
-            <div class="addingBlock">
-                <div class="addingHeader"> Basic information </div>
-                <div class="row no-gutters">
-                    <div class="col-md-3 d-none d-md-block addingLabelBlock"> Idea </div>
-                    <div class="col-md-3 d-block d-sm-none addingLabelBlockSmallFirst"> Idea </div>
-                    <div class="col-md-9 col-12 addingInputBlock"><textarea rows="4" th:field="*{description}" th:class="${#fields.hasErrors('description')}? addError : addingInput"></textarea></div>
-                </div>
-            </div>
-        </form>
-        <div class="row no-gutters">
-            <div class="col-md-6 col-12">
-                <div class="ideas">
-                    <div class="ideasHeader"> My ideas </div>
-                    <div class="table-responsive ideasTable">
-                        <table class="table table-bordered">
-                            <tbody>
-                            <tr th:each="idea : ${ideaListByUser}">
-                                <td>
-                                    <a class="tableLink" th:text="${idea.description}"></a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-12">
-                <div class="ideas">
-                    <div class="ideasHeader"> Ideas v.2 </div>
-                </div>
-            </div>
+        <div class="table-responsive choiceTable">
+            <table class="table table-bordered">
+                <thead>
+                <th> Idea</th>
+                <th> Status</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                </thead>
+                <tbody>
+                <tr th:each="idea : ${ideaListByUser}">
+                    <td class="tableLink" th:text="${idea.description}"></td>
+                    <td class="tableLink" th:text="${idea.status}"></td>
+                    <td class="tableLink iconsCenter"><a href="/idea/done" class="blackLinks"><i class="fas fa-check-square ideaOptions"></i></a></td>
+                    <td class="tableLink iconsCenter"><a href="/idea/undone" class="blackLinks"><i class="fas fa-times-circle ideaOptions"></i></a></td>
+                    <td class="tableLink iconsCenter"><a href="/idea/delete" class="blackLinks"><i class="fas fa-trash-alt ideaOptions"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

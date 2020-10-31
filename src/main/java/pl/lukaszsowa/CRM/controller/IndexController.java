@@ -72,16 +72,5 @@ public class IndexController {
         getLoggedUserInfo(model);
         return "settings";
     }
-
-    @PostMapping("/save-idea")
-    public String saveIdea(@Valid @ModelAttribute Idea idea, BindingResult bindingResult, Model model){
-        getLoggedUserInfo(model);
-        model.addAttribute("idea", new Idea());
-        Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
-        String login = loggedUser.getName();
-        idea.setUser(userService.getUser(login));
-        ideaService.addIdea(idea);
-        return "redirect:/index";
-    }
 }
 

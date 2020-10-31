@@ -20,6 +20,8 @@ public class Idea {
 
     private String description;
 
+    private String status;
+
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;

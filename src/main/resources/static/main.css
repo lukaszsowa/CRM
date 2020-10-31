@@ -642,6 +642,25 @@ background-color: #3a404a !important;
     width: 85%;
 }
 
+a.blackLinks:link
+{
+    color: black !important;
+}
+
+a.blackLinks:visited
+{
+    color: black !important;
+}
+
+.ideaOptions
+{
+    font-size: 20px;
+}
+
+.iconsCenter
+{
+    text-align: center;
+}
     .bar{
         background-color: #4A5364;
         height: 50px;
