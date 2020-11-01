@@ -19,8 +19,16 @@ public class IdeaService {
         return ideaRepository.save(idea);
     }
 
+    public void deleteIdea(long id){
+        ideaRepository.deleteById(id);
+    }
+
     public List<Idea> getIdeas(){
         return ideaRepository.findAll();
+    }
+
+    public List<Idea> getAllIdeasByUserId(long id){
+        return ideaRepository.getAllIdeasByUserId(id);
     }
 
     public List<Idea> getIdeasByUserId(long id){

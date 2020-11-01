@@ -661,6 +661,18 @@ a.blackLinks:visited
 {
     text-align: center;
 }
+
+.redText
+{
+    color: red;
+    font-weight: 900;
+}
+
+.greenText
+{
+    color: green;
+    font-weight: 900;
+}
     .bar{
         background-color: #4A5364;
         height: 50px;

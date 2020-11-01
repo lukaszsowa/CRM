@@ -36,8 +36,7 @@
         <div class="col-md-12 col-4 menuTest"><a href="/training"><i class="fas fa-calendar-week navIcon"></i> Trainings</a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/users"><i class="fas fa-user navIcon"></i> Users </a></div>
         <div class="col-md-12 col-4 menuTest"><a href="/test"><i class="fas fa-eye-slash navIcon"></i> Test </a></div>
-        <div class="col-md-12 col-4 menuTest"><a href="/settings"><i class="fas fa-cogs navIcon"></i> Settings </a></div>
-        <div class="col-md-12 col-4 menuTest checked"><a href="/ideas"><i class="fas fa-cogs idea"></i> Ideas </a></div>
+        <div class="col-md-12 col-4 menuTest checked"><a href="/ideas"><i class="fas fa-lightbulb navIcon"></i> Ideas </a></div>
     </div>
 
     <div class="col-md-10 content">
@@ -61,10 +60,10 @@
                 <tbody>
                 <tr th:each="idea : ${ideaListByUser}">
                     <td class="tableLink" th:text="${idea.description}"></td>
-                    <td class="tableLink" th:text="${idea.status}"></td>
-                    <td class="tableLink iconsCenter"><a href="/idea/done" class="blackLinks"><i class="fas fa-check-square ideaOptions"></i></a></td>
-                    <td class="tableLink iconsCenter"><a href="/idea/undone" class="blackLinks"><i class="fas fa-times-circle ideaOptions"></i></a></td>
-                    <td class="tableLink iconsCenter"><a href="/idea/delete" class="blackLinks"><i class="fas fa-trash-alt ideaOptions"></i></a></td>
+                    <td class="tableLink" th:class="${idea.status == 'Done!'}? greenText : redText" th:text="${idea.status}"></td>
+                    <td class="tableLink iconsCenter"><a th:href="'/idea/done/' + ${idea.id}" class="blackLinks"><i class="fas fa-check-square ideaOptions"></i></a></td>
+                    <td class="tableLink iconsCenter"><a th:href="'/idea/to-do/' + ${idea.id}" class="blackLinks"><i class="fas fa-times-circle ideaOptions"></i></a></td>
+                    <td class="tableLink iconsCenter"><a th:href="'/idea/delete/' + ${idea.id}" class="blackLinks"><i class="fas fa-trash-alt ideaOptions" onclick="return confirm('Are you sure you want to Remove?');"></i></a></td>
                 </tr>
                 </tbody>
             </table>

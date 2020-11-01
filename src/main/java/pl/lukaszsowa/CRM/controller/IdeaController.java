@@ -4,19 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.lukaszsowa.CRM.model.Contact;
 import pl.lukaszsowa.CRM.model.Idea;
+import pl.lukaszsowa.CRM.model.Training;
 import pl.lukaszsowa.CRM.model.User;
 import pl.lukaszsowa.CRM.service.IdeaService;
 import pl.lukaszsowa.CRM.service.UserService;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class IdeaController {
@@ -26,6 +30,9 @@ public class IdeaController {
 
     @Autowired
     IdeaService ideaService;
+
+    @Autowired
+    EntityManager entityManager;
 
     public void getLoggedUserInfo(Model model) {
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
@@ -54,9 +61,31 @@ public class IdeaController {
         model.addAttribute("idea", new Idea());
         String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
         long userId = userService.getUser(loggedUser).getId();
-        model.addAttribute("ideaListByUser", ideaService.getIdeasByUserId(userId));
+        model.addAttribute("ideaListByUser", ideaService.getAllIdeasByUserId(userService.getUser(loggedUser).getId()));
         return "idea";
     }
 
+    @RequestMapping(value = "/idea/delete/{id}", method = RequestMethod.GET)
+    public String deleteIdea(@PathVariable("id") long id){
+        ideaService.deleteIdea(id);
+        return "redirect:/ideas";
+    }
 
+    @Transactional
+    @RequestMapping(value = "/idea/done/{id}", method = RequestMethod.GET)
+    public String setStatusDone(@PathVariable("id") long id){
+        Query query = entityManager.createNativeQuery("UPDATE idea SET idea.status = 'Done!' where idea.id =:id");
+        query.setParameter("id", id);
+        query.executeUpdate();
+        return "redirect:/ideas";
+    }
+
+    @Transactional
+    @RequestMapping(value = "/idea/to-do/{id}", method = RequestMethod.GET)
+    public String setStatusToDo(@PathVariable("id") long id){
+        Query query = entityManager.createNativeQuery("UPDATE idea SET idea.status = 'To do!' where idea.id =:id");
+        query.setParameter("id", id);
+        query.executeUpdate();
+        return "redirect:/ideas";
+    }
 }
