@@ -199,6 +199,4 @@ public class TrainingController {
         query.executeUpdate();
         return "redirect:/training/{id}/participants";
     }
-
-
 }

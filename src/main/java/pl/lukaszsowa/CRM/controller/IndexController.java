@@ -58,6 +58,11 @@ public class IndexController {
         return "test";
     }
 
+    @GetMapping("/csv-import")
+    String getImport(){
+        return "import";
+    }
+
     public void getLoggedUserInfo(Model model) {
         Authentication loggedUser = SecurityContextHolder.getContext().getAuthentication();
         String login = loggedUser.getName();
