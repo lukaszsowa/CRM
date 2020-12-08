@@ -3,29 +3,39 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Index</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/main.css"/>
+    <script type="text/javascript" src="/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/e05edf3ce6.js" crossorigin="anonymous"></script>
 </head>
 <body id="loginPage">
-
-<div>
-
-    <div>
-        <img id="logoLoginPage" src="crm.png"/>
+<div class="row no-gutters">
+    <div class="col-sm-4 col-12"></div>
+    <div class="col-sm-4 col-12">
+        <div>
+            <img id="logoLoginPage" src="crm.png"/>
+        </div>
+        <form action="loginform" th:action="@{/}" method="post" ><br>
+            <div>
+                <h1> Login error! </h1>
+            </div>
+            <div>
+                <input class="form-control text-center" type="email" th:name="login" placeholder="Login"/>
+            </div>
+            <div>
+                <input class="form-control text-center" type="password" th:name="password" placeholder="Password"/><br>
+            </div>
+            <div>
+                <input class="btn btn-primary" style="width: 50%;" type="submit" value="Login"/>
+            </div>
+        </form>
     </div>
-
-    <h1> Login Error ! </h1>
-
-    <form action="loginform" th:action="@{/}" method="post" ><br>
-        <input class="loginInput" type="text" th:name="login" placeholder="Username"/><br>
-        <input class="loginInput" type="password" th:name="password" placeholder="Password"/><br>
-        <input id="loginBtn" type="submit" value="Login"/>
-    </form>
+    <div class="col-sm-4 col-12"></div>
 </div>
-
-
-
 </body>
 </html>
