@@ -22,13 +22,13 @@
             </div>
             <form action="loginform" th:action="@{/}" method="post" ><br>
                 <div>
-                    <input class="form-control text-center" type="email" th:name="login" placeholder="Login"/>
+                    <input class="form-control text-center loginInput" type="text" th:name="login" placeholder="Login"/>
                 </div>
                 <div>
-                    <input class="form-control text-center" type="password" th:name="password" placeholder="Password"/><br>
+                    <input class="form-control text-center loginInput" type="password" th:name="password" placeholder="Password"/><br>
                 </div>
                 <div>
-                    <input class="btn btn-primary" style="width: 50%;" type="submit" value="Login"/>
+                    <input class="btn btn-primary loginButton" style="width: 50%;" type="submit" value="Login"/>
                 </div>
             </form>
         </div>

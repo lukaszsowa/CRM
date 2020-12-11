@@ -46,7 +46,7 @@ public class UserController {
     @GetMapping("users/add")
     public String addUser(Model model){
         model.addAttribute("user", new User());
-        getLoggedUserInfo(model);
+//        getLoggedUserInfo(model);
         return "users-add";
     }
 
