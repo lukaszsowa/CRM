@@ -811,16 +811,17 @@ a.blackLinks:visited
         padding: 0px 20px 20px 20px;
     }
 
-    .row.no-gutters
-    {
-        margin-right: 0;
-        margin-left: 0;
+.row.no-gutters
+{
+    margin-right: 0;
+    margin-left: 0;
 
-        & > [class^="col-"],
-        & > [class*=" col-"] {
+    & > [class^="col-"],
+    & > [class*=" col-"]
+      {
         padding-right: 0;
         padding-left: 0;
-    }
+      }
 
 
 
