@@ -35,8 +35,6 @@ import java.util.Optional;
 @Controller
 public class CompanyController {
 
-    test
-
     @Autowired
     UserService userService;
 
